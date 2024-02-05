@@ -48,5 +48,10 @@ namespace NonoMod.Items.Tools
             recipe.Register();
 
         }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-8f, 3f);
+        }
     }
 }

@@ -32,19 +32,6 @@ namespace NonoMod.Items.Projectiles
             SharedRotation = Projectile.rotation;
 
         }
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            IsStickingToTarget = true; // we are sticking to a target
-            TargetWhoAmI = target.whoAmI; // Set the target whoAmI
-            Projectile.velocity =
-                (target.Center - Projectile.Center) *
-                0.75f; // Change velocity based on delta center of targets (difference between entity centers)
-            Projectile.netUpdate = true; // netUpdate this javelin
-            target.AddBuff(BuffID.ShadowFlame, 900); // Adds the ExampleJavelin debuff for a very small DoT
-
-            Projectile.damage = 0; // Makes sure the sticking javelins do not deal damage anymore
-
-        }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -57,7 +44,6 @@ namespace NonoMod.Items.Projectiles
             return projHitbox.Intersects(targetHitbox);
         }
 
-        bool first = true;
         public override void OnKill(int timeLeft)
         {
             Vector2 usePos = Projectile.position; // Position to use for dusts

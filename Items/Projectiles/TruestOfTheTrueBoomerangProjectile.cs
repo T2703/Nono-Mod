@@ -25,6 +25,7 @@ namespace NonoMod.Items.Projectiles
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 300;
+            Projectile.ignoreWater = true;
 
         }
 

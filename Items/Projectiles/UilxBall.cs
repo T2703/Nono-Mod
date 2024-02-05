@@ -22,7 +22,8 @@ namespace NonoMod.Items.Projectiles
             Projectile.tileCollide = true;
             Projectile.penetrate = 1;
             Projectile.aiStyle = -1;
-    
+            Projectile.ignoreWater = true;
+
         }
 
         public override void AI()

@@ -232,6 +232,7 @@ Projectiles: {
 	ForsakenStinger.DisplayName: Forsaken Stinger
 	JudgementCut.DisplayName: Judgement Cut
 	JudgementNut.DisplayName: Judgement Nut
+	Guilt.DisplayName: Guilt
 }
 
 Buffs: {
