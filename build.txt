@@ -1,0 +1,3 @@
+displayName = Nono Mod
+author = nono_t27
+version = 0.11

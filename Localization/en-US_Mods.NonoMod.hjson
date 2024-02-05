@@ -1,0 +1,268 @@
+# This file will automatically update with entries for new content after a build and reload
+
+Items: {
+	SuperbCopperSword: {
+		DisplayName: Superb Copper Sword
+		Tooltip: This is my first sword/item you shouldn't have this.
+	}
+
+	LustCannon: {
+		DisplayName: Lust Cannon
+		Tooltip: Left click shoots flames, right click shoots ice. Flames use less mana and ice uses more.
+	}
+
+	Muraslasher: {
+		Tooltip: Once wielded by a legendary warrior.
+		DisplayName: Muraslasher
+	}
+
+	Tsurugi: {
+		Tooltip: Rain down a fury of swords!
+		DisplayName: Tsurugi
+	}
+
+	Postal: {
+		DisplayName: Postal
+		Tooltip:
+			'''
+			50% chance to save ammo.
+			Has a chance to shoot a high velocity bullet.
+			Only my weapon understands me.
+			'''
+	}
+
+	ComedySpoon: {
+		DisplayName: Comedy Spoon
+		Tooltip:
+			'''
+			Shoots a png of a spoon that explodes into 4 party bullets on contact.
+			Goofy ah weapon.
+			'''
+	}
+
+	HealthPipe: {
+		DisplayName: Health Pipe
+		Tooltip:
+			'''
+			Increases max health by 25.
+			Increases health regen.
+			This can't be good for me but, I feel great.
+			'''
+	}
+
+	Aurora: {
+		DisplayName: Aurora
+		Tooltip: ""
+	}
+
+	MachinePistol: {
+		DisplayName: Machine Pistol
+		Tooltip:
+			'''
+			15% chance to save ammo.
+			Very fast gun and also shoots two bullets. 
+			'''
+	}
+
+	Forsaken: {
+		DisplayName: Forsaken
+		Tooltip:
+			'''
+			Left click to rapid slash your foes.
+			Right click to summon Sword Dance.
+			25% to heal from a hit.
+			1% to heal massive HP.
+			Inflicts shadowflames.
+			Forsakened I am awakened.
+			'''
+	}
+
+	ReplicaOfALegend: {
+		DisplayName: Replica of a Legend
+		Tooltip:
+			'''
+			Unleash fast slash.
+			Replica of some godly sword, not as powerful. 
+			'''
+	}
+
+	LifelessKnife: {
+		DisplayName: Lifeless Knife
+		Tooltip: Can heal 1 HP with each hit.
+	}
+
+	Fumo: {
+		DisplayName: Fumo
+		Tooltip:
+			'''
+			Increases regen and defense by 9 points.
+			Increases luck, damage, and critical chance by 9%.
+			Immune to frostburn.
+			Funky.
+			'''
+	}
+
+	NumberOne: {
+		DisplayName: Number One
+		Tooltip:
+			'''
+			Shoots out a projectile.
+			The brightest star for all to see, now you feel like number one.
+			'''
+	}
+
+	WritingOnTheWall: {
+		DisplayName: Writing on the Wall
+		Tooltip:
+			'''
+			Summons down arrows when hitting an enemy.
+			Have you seen the writing on the wall?
+			'''
+	}
+
+	UilxStaff: {
+		DisplayName: Uilx Staff
+		Tooltip: Shoots out homing bolts.
+	}
+
+	TheWretchedSpawn: {
+		DisplayName: The Wretched Spawn
+		Tooltip:
+			'''
+			12% chance to explode enemies on hit.
+			The wretched spawn, inherently vile.
+			'''
+	}
+
+	QuarterCircleFwd: {
+		DisplayName: Quarter Circle Fwd
+		Tooltip: ""
+	}
+
+	GiftCard: {
+		DisplayName: Gift Card
+		Tooltip:
+			'''
+			Increased ranged damage by 7%.
+			Increases chance to not consume ammo by 10%.
+			'''
+	}
+
+	MagicGun: {
+		DisplayName: Magic Gun
+		Tooltip: A spell that functions like a gun, pretty neat.
+	}
+
+	CoffeeAndCream: {
+		DisplayName: Coffee And Cream
+		Tooltip: Explodes a crystal ball upon on hitting an enemy.
+	}
+
+	UnderTheGraveyard: {
+		DisplayName: Under The Graveyard
+		Tooltip:
+			'''
+			Summons down a rain of tombstones that explodes into bones upon contact.
+			We're all rotting bones.
+			'''
+	}
+
+	UilxBlade: {
+		DisplayName: Uilx Blade
+		Tooltip: Shoots a blade that splits into balls on contact.
+	}
+
+	UilxMatter: {
+		DisplayName: Uilx Matter
+		Tooltip: ""
+	}
+
+	TruestOfTheTrueBoomerang: {
+		DisplayName: Truest of the True Boomerang
+		Tooltip: The sacred boomerang!
+	}
+
+	TrulyCactusPick: {
+		DisplayName: Truly Cactus Pick
+		Tooltip: Note: NOT a pickaxe.
+	}
+
+	PhaserAxe: {
+		DisplayName: Phaser Axe
+		Tooltip: ""
+	}
+
+	CursedSight: {
+		DisplayName: Cursed Sight
+		Tooltip: ""
+	}
+
+	AngelThanatos: {
+		Tooltip: ""
+		DisplayName: Angel's Thanatos
+	}
+}
+
+Projectiles: {
+	TrueMeleeEffect.DisplayName: True Melee Effect
+	CopperProjectile.DisplayName: Copper Projectile
+	NACBeam.DisplayName: N A C Beam
+	GoldCutProjectile.DisplayName: Gold Cut Projectile
+	HakSlash.DisplayName: Hak Slash
+	SlashCharge.DisplayName: Slash Charge
+	ExampleCustomSwingProjectile.DisplayName: Example Custom Swing Projectile
+	ExampleCustomSwingSword.DisplayName: Example Custom Swing Sword
+	TsurugiRain.DisplayName: Tsurugi Rain
+	TsurugiEffect.DisplayName: Tsurugi Effect
+	TsurugiRainKill.DisplayName: Tsurugi Rain Kill
+	SpoonProjectile.DisplayName: Spoon Projectile
+	ForsakenSlash.DisplayName: Forsaken Slash
+	SwordDance.DisplayName: Sword Dance
+	SwordDanceHoming.DisplayName: Sword Dance Homing
+	NumberOneEffects.DisplayName: Number One Effects
+	NumberOneProjectile.DisplayName: Number One Projectile
+	UilxBall.DisplayName: Uilx Ball
+	Hadoken.DisplayName: Hadoken
+	CoffeeAndCreamEffects.DisplayName: Coffee And Cream Effects
+	Tombstone.DisplayName: Tombstone
+	UilxBladeBeam.DisplayName: Uilx Blade Beam
+	UilxBallBounce.DisplayName: Uilx Ball Bounce
+	TruestOfTheTrueBoomerangProjectile.DisplayName: Truest Of The True Boomerang Projectile
+	TrulyCactusPickProjectile.DisplayName: Truly Cactus Pick Projectile
+	ForsakenStinger.DisplayName: Forsaken Stinger
+	JudgementCut.DisplayName: Judgement Cut
+	JudgementNut.DisplayName: Judgement Nut
+}
+
+Buffs: {
+	SwordDanceCooldown: {
+		DisplayName: Sword Dance Cooldown
+		Description: Cannot use Sword Dance.
+	}
+
+	StrongSpirit: {
+		DisplayName: Strong Spirit
+		Description: Mods.NonoMod.Buffs.StrongSpirit.Description
+	}
+
+	Motivation: {
+		Description: Now you're motivated.
+		DisplayName: Motivation
+	}
+
+	JudgementCutCooldown: {
+		Description: Cannot use Judgement Cut.
+		DisplayName: Judgement Cut Cooldown
+	}
+
+	Unmotivated: {
+		Description: Mods.NonoMod.Buffs.Unmotivated.Description
+		DisplayName: Unmotivated
+	}
+}
+
+NPCs: {
+	LostOne.DisplayName: Lost One
+	GamingB.DisplayName: Gaming B
+	UilxSpirit.DisplayName: Uilx Spirit
+}

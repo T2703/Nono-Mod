@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "k+NmlQpUM5WIAe7AXbx1tnpHslUIx27Wq07v4J1LYox3EAJy6b/q9X4wgYKHMUPOB8Kf86NM6axpbJJASvVEPA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Mr. Nono\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\NonoMod\\NonoMod.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mr. Nono\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+  ],
+  "logs": []
+}
