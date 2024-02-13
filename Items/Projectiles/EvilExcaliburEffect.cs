@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -10,7 +11,7 @@ using Terraria.ModLoader;
 namespace NonoMod.Items.Projectiles
 {
     // This is a copy of the Excalibur's projectile
-    public class TsurugiEffect : ModProjectile
+    public class EvilExcaliburEffect : ModProjectile
     {
 
         // We could use a vanilla texture if we want instead of supplying our own.
@@ -18,11 +19,7 @@ namespace NonoMod.Items.Projectiles
 
         public override void SetStaticDefaults()
         {
-            // If a Jellyfish is zapping and we attack it with this projectile, it will deal damage to us.
-            // This set has the projectiles for the Night's Edge, Excalibur, Terra Blade (close range), and The Horseman's Blade (close range).
-            // This set does not have the True Night's Edge, True Excalibur, or the long range Terra Beam projectiles.
-            ProjectileID.Sets.AllowsContactDamageFromJellyfish[Type] = true;
-            Main.projFrames[Type] = 4; // This projectile has 4 frames.
+            Main.projFrames[Type] = 4; 
         }
 
         public override void SetDefaults()
@@ -32,7 +29,7 @@ namespace NonoMod.Items.Projectiles
             Projectile.height = 16;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
-            Projectile.penetrate = -1; // The projectile can hit 3 enemies.
+            Projectile.penetrate = 5; // The projectile can hit 3 enemies.
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
             Projectile.tileCollide = false;
@@ -45,8 +42,8 @@ namespace NonoMod.Items.Projectiles
             Projectile.stopsDealingDamageAfterPenetrateHits = true;
 
             // We will be using custom AI for this projectile. The original Excalibur uses aiStyle 190.
-            Projectile.aiStyle = -1;
-            // Projectile.aiStyle = ProjAIStyleID.NightsEdge; // 190
+            //Projectile.aiStyle = -1;
+            //Projectile.aiStyle = ProjAIStyleID.NightsEdge; // 190
             // AIType = ProjectileID.Excalibur;
 
             // If you are using custom AI, add this line. Otherwise, visuals from Flasks will spawn at the center of the projectile instead of around the arc.
@@ -57,6 +54,8 @@ namespace NonoMod.Items.Projectiles
         public override void AI()
         {
 
+            Lighting.AddLight(Projectile.Center, 1f, 0, 0);
+
             Projectile.localAI[0]++; // Current time that the projectile has been alive.
             Player player = Main.player[Projectile.owner];
             float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1]; // The current time over the max time.
@@ -65,8 +64,8 @@ namespace NonoMod.Items.Projectiles
             float adjustedRotation = MathHelper.Pi * direction * percentageOfLife + velocityRotation + direction * MathHelper.Pi + player.fullRotation;
             Projectile.rotation = adjustedRotation; // Set the rotation to our to the new rotation we calculated.
 
-            float scaleMulti = 0.6f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f 
-            float scaleAdder = 1f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f 
+            float scaleMulti = 1f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f 
+            float scaleAdder = 1.4f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f 
 
             Projectile.Center = player.RotatedRelativePoint(player.MountedCenter) - Projectile.velocity;
             Projectile.scale = scaleAdder + percentageOfLife * scaleMulti;
@@ -74,25 +73,6 @@ namespace NonoMod.Items.Projectiles
             // The other sword projectiles that use AI Style 190 have different effects.
             // This example only includes the Excalibur.
             // Look at AI_190_NightsEdge() in Projectile.cs for the others.
-
-            // Here we spawn some dust inside the arc of the swing.
-            float dustRotation = Projectile.rotation + Main.rand.NextFloatDirection() * MathHelper.PiOver2 * 0.7f;
-            Vector2 dustPosition = Projectile.Center + dustRotation.ToRotationVector2() * 84f * Projectile.scale;
-            Vector2 dustVelocity = (dustRotation + Projectile.ai[0] * MathHelper.PiOver2).ToRotationVector2();
-            if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
-            {
-                // Original Excalibur color: Color.Gold, Color.White
-                Color dustColor = Color.Lerp(Color.Cyan, Color.LightBlue, Main.rand.NextFloat() * 0.3f);
-                Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), DustID.BlueFairy, dustVelocity * 1f, 100, dustColor, 0.4f);
-                coloredDust.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
-                coloredDust.noGravity = true;
-            }
-
-            if (Main.rand.NextFloat() * 1.5f < Projectile.Opacity)
-            {
-                // Original Excalibur color: Color.White
-                Dust.NewDustPerfect(dustPosition, DustID.TintableDustLighted, dustVelocity, 100, Color.SkyBlue * Projectile.Opacity, 1.2f * Projectile.Opacity);
-            }
 
             Projectile.scale *= Projectile.ai[2]; // Set the scale of the projectile to the scale of the item.
 
@@ -165,28 +145,30 @@ namespace NonoMod.Items.Projectiles
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // Vanilla has several particles that can easily be used anywhere.
-            // The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.
-            // Use auto complete to see the other ParticleOrchestraType types there are.
-            // Here we are spawning the Excalibur particle randomly inside of the target's hitbox
+            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.NightsEdge,
+                new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
+                Projectile.owner);
 
-            // You could also spawn dusts at the enemy position. Here is simple an example:
-            Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, DustID.BlueFairy);
-
-            // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
-
-            target.AddBuff(BuffID.Frostburn2, 50);
-
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, DustID.BlueFairy);
+            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.NightsEdge,
+                new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
+                Projectile.owner);
 
             info.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
+        }
 
-            target.AddBuff(BuffID.Frostburn2, 50);
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            target.AddBuff(BuffID.ShadowFlame, 1200);
+        }
+
+        public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+        {
+            target.AddBuff(BuffID.ShadowFlame, 1200);
         }
 
         // Taken from Main.DrawProj_Excalibur()
@@ -204,37 +186,27 @@ namespace NonoMod.Items.Projectiles
             float lightingColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates()).ToVector3().Length() / (float)Math.Sqrt(3.0);
             lightingColor = Utils.Remap(lightingColor, 0.2f, 1f, 0f, 1f);
 
-            Color backDarkColor = new Color(60, 160, 180); // Original Excalibur color: Color(180, 160, 60)
-            Color middleMediumColor = new Color(80, 255, 255); // Original Excalibur color: Color(255, 255, 80)
-            Color frontLightColor = new Color(150, 240, 255); // Original Excalibur color: Color(255, 240, 150)
-
-            Color whiteTimesLerpTime = Color.White * lerpTime * 0.5f;
-            whiteTimesLerpTime.A = (byte)(whiteTimesLerpTime.A * (1f - lightingColor));
-            Color faintLightingColor = whiteTimesLerpTime * lightingColor * 0.5f;
-            faintLightingColor.G = (byte)(faintLightingColor.G * lightingColor);
-            faintLightingColor.B = (byte)(faintLightingColor.R * (0.25f + lightingColor * 0.75f));
+            Color backDarkColor = new Color(50, 0, 50); // Adjusted for darkish purple
+            Color middleMediumColor = new Color(55, 0, 65); // Black
+            Color frontLightColor = new Color(0, 0, 1); // White
 
             // Back part
             Main.EntitySpriteDraw(texture, position, sourceRectangle, backDarkColor * lightingColor * lerpTime, Projectile.rotation + Projectile.ai[0] * MathHelper.PiOver4 * -1f * (1f - percentageOfLife), origin, scale, spriteEffects, 0f);
             // Very faint part affected by the light color
-            Main.EntitySpriteDraw(texture, position, sourceRectangle, faintLightingColor * 0.15f, Projectile.rotation + Projectile.ai[0] * 0.01f, origin, scale, spriteEffects, 0f);
+            Main.EntitySpriteDraw(texture, position, sourceRectangle, Color.Purple * 0.15f, Projectile.rotation + Projectile.ai[0] * 0.01f, origin, scale, spriteEffects, 0f);
             // Middle part
             Main.EntitySpriteDraw(texture, position, sourceRectangle, middleMediumColor * lightingColor * lerpTime * 0.3f, Projectile.rotation, origin, scale, spriteEffects, 0f);
             // Front part
             Main.EntitySpriteDraw(texture, position, sourceRectangle, frontLightColor * lightingColor * lerpTime * 0.5f, Projectile.rotation, origin, scale * 0.975f, spriteEffects, 0f);
             // Thin top line (final frame)
-            Main.EntitySpriteDraw(texture, position, texture.Frame(1, 4, 0, 3), Color.BlueViolet * 0.6f * lerpTime, Projectile.rotation + Projectile.ai[0] * 0.01f, origin, scale, spriteEffects, 0f);
+            Main.EntitySpriteDraw(texture, position, texture.Frame(1, 4, 0, 3), Color.MediumPurple * 0.6f * lerpTime, Projectile.rotation + Projectile.ai[0] * 0.01f, origin, scale, spriteEffects, 0f);
             // Thin middle line (final frame)
-            Main.EntitySpriteDraw(texture, position, texture.Frame(1, 4, 0, 3), Color.Blue * 0.5f * lerpTime, Projectile.rotation + Projectile.ai[0] * -0.05f, origin, scale * 0.8f, spriteEffects, 0f);
+            Main.EntitySpriteDraw(texture, position, texture.Frame(1, 4, 0, 3), Color.Black * 0.5f * lerpTime, Projectile.rotation + Projectile.ai[0] * -0.05f, origin, scale * 0.8f, spriteEffects, 0f);
             // Thin bottom line (final frame)
-            Main.EntitySpriteDraw(texture, position, texture.Frame(1, 4, 0, 3), Color.DeepSkyBlue * 0.4f * lerpTime, Projectile.rotation + Projectile.ai[0] * -0.1f, origin, scale * 0.6f, spriteEffects, 0f);
-
-            // This draws a large star sparkle at the front of the projectile.
-            Vector2 drawPos2 = position + (Projectile.rotation + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0]).ToRotationVector2() * ((float)texture.Width * 0.5f - 4f) * scale;
+            Main.EntitySpriteDraw(texture, position, texture.Frame(1, 4, 0, 3), Color.Black * 0.4f * lerpTime, Projectile.rotation + Projectile.ai[0] * -0.1f, origin, scale * 0.6f, spriteEffects, 0f);
 
             // Uncomment this line for a visual representation of the projectile's size.
             // Main.EntitySpriteDraw(TextureAssets.MagicPixel.Value, position, sourceRectangle, Color.Orange * 0.75f, 0f, origin, scale, spriteEffects);
-
 
             return false;
         }

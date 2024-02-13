@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using NonoMod.Items;
+using NonoMod.Items.Weapons.Magic;
 using NonoMod.Items.Weapons.Melee;
 using Terraria;
 using Terraria.Audio;
@@ -42,8 +43,9 @@ namespace NonoMod.NPCs
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ReplicaOfALegend>(), 8, 1, 1));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Aurora>(), 5, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ReplicaOfALegend>(), 10, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Aurora>(), 8, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<IncompleteSpecimen>(), 13, 1, 1));
 
         }
 

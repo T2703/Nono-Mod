@@ -75,7 +75,7 @@ namespace NonoMod.Items.Weapons.Melee
             if (player.altFunctionUse == 2 && !player.HasBuff(ModContent.BuffType<JudgementCutCooldown>())) //!player.HasBuff(ModContent.BuffType<SwordDanceCooldown>())
             {
                 player.AddBuff(ModContent.BuffType<Motivation>(), 1250);
-                player.AddBuff(ModContent.BuffType<JudgementCutCooldown>(), 3800);
+                player.AddBuff(ModContent.BuffType<JudgementCutCooldown>(), 5000);
 
                 SoundStyle JudgementCutRelease = new SoundStyle($"{nameof(NonoMod)}/Items/Sounds/ForsakenJudgeSFX")
                 {
@@ -142,6 +142,8 @@ namespace NonoMod.Items.Weapons.Melee
             recipe.AddIngredient(ModContent.ItemType<TheWretchedSpawn>(), 1);
             recipe.AddIngredient(ModContent.ItemType<CoffeeAndCream>(), 1);
             recipe.AddIngredient(ModContent.ItemType<NumberOne>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<AngelThanatos>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<EvilExcalibur>(), 1);
 
             recipe.AddIngredient(ItemID.FragmentSolar, 15);
             recipe.AddIngredient(ItemID.FragmentNebula, 15);

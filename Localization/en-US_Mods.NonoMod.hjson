@@ -198,8 +198,37 @@ Items: {
 	}
 
 	AngelThanatos: {
-		Tooltip: ""
+		Tooltip: Filled with undying guilt.
 		DisplayName: Angel's Thanatos
+	}
+
+	HellishFright: {
+		Tooltip: Summons down Hellish Bolts upon hitting an enemy with the projectile.
+		DisplayName: Hellish Fright
+	}
+
+	IncompleteSpecimen: {
+		DisplayName: Incomplete Specimen
+		Tooltip: Shoots out homing Forgotten Eyes.
+	}
+
+	GoodTastyChicken: {
+		Tooltip: Mmmm, tasty.
+		DisplayName: Good Tasty Chicken
+	}
+
+	Doomstick: {
+		Tooltip: ""
+		DisplayName: Doomstick
+	}
+
+	EvilExcalibur: {
+		DisplayName: Evil Excalibur
+		Tooltip:
+			'''
+			Shoots a beam that spawns spinning scythes upon contact within an enemy.
+			Excalibur if it was, evil.
+			'''
 	}
 }
 
@@ -233,6 +262,12 @@ Projectiles: {
 	JudgementCut.DisplayName: Judgement Cut
 	JudgementNut.DisplayName: Judgement Nut
 	Guilt.DisplayName: Guilt
+	HellishProjectile.DisplayName: Hellish Projectile
+	HellishBolt.DisplayName: Hellish Bolt
+	ForgottenEyes.DisplayName: Forgotten Eyes
+	DoomstickProjectile.DisplayName: Doomstick Projectile
+	EvilExcaliburEffect.DisplayName: Evil Excalibur Effect
+	EvilExcaliburBeam.DisplayName: Evil Excalibur Beam
 }
 
 Buffs: {

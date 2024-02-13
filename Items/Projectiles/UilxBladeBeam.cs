@@ -47,13 +47,13 @@ namespace NonoMod.Items.Projectiles
             Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.PinkCrystalShard, 0f, 0f, 100, default, 1f);
             SoundEngine.PlaySound(SoundID.Item89, Projectile.position);
 
-            int randomIValue = Main.rand.Next(5, 6);
+            int randomIValue = Main.rand.Next(2, 3);
             for (int i = 0; i < randomIValue; i++)
             {
                 float randomX = Main.rand.NextFloat(-31f, 30f);
                 float randomY = Main.rand.NextFloat(-31f, 33f);
                 Vector2 launchVelocity = new Vector2(randomX, randomY);
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ModContent.ProjectileType<UilxBallBounce>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ModContent.ProjectileType<UilxBallBounce>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
             }
         }
 

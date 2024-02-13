@@ -16,7 +16,8 @@ namespace NonoMod.Drops
             for (int chestIndex = 0; chestIndex < Main.maxChests; chestIndex++)
             {
                 Chest chest = Main.chest[chestIndex];
-                int[] itemsToPlaceInChest = { ModContent.ItemType<WritingOnTheWall>() };
+                int[] itemsToPlaceInChest = { ModContent.ItemType<WritingOnTheWall>(), ModContent.ItemType<GoodTastyChicken>() };
+                int itemsToPlaceInChestChoice = 0;
 
                 if (chest == null)
                 {
@@ -34,7 +35,7 @@ namespace NonoMod.Drops
                         if (chest.item[inventoryIndex].type == ItemID.None)
                         {
                             chest.item[inventoryIndex].SetDefaults(itemsToPlaceInChest[0]);
-                            //chest.item[inventoryIndex].stack = writingOnTheWallNum;
+                            itemsToPlaceInChestChoice = (itemsToPlaceInChestChoice + 1) % itemsToPlaceInChest.Length;
                             break;
                         }
                     }

@@ -10,31 +10,38 @@ using Terraria.Audio;
 
 namespace NonoMod.Items.Projectiles
 {
-	public class UilxBall : ModProjectile
+	public class ForgottenEyes : ModProjectile
 	{
 
         public override void SetDefaults()
 		{
-            Projectile.width = 18;
-            Projectile.height = 18;
+            Projectile.width = 20;
+            Projectile.height = 20;
             Projectile.DamageType = DamageClass.Magic;
             Projectile.friendly = true;
             Projectile.tileCollide = true;
             Projectile.penetrate = 1;
-            Projectile.aiStyle = -1;
-            Projectile.ignoreWater = true;
-
+            Projectile.scale = 0.4f;
+    
         }
 
         public override void AI()
         {
-            // Dust & lighting 
-            Lighting.AddLight(Projectile.Center, 2f, 2f, 3f);
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.PinkCrystalShard, 0f, 0f, 100, default, 1f); 
+            // Penetration chance.
+            if (Main.rand.NextFloat() < 0.25f)
+            {
+                Projectile.penetrate = 2;
+            }
+
+
+            if (Main.rand.NextFloat() < 0.35f)
+            {
+                Projectile.penetrate = 3;
+            }
 
             // Homing
-            float maxDetectection = 300f;
-            float homingSpeed = 10.5f;
+            float maxDetectection = 360f;
+            float homingSpeed = 21f;
 
             NPC closestNPC = FindClosetNPC(maxDetectection);
             if (closestNPC == null)
@@ -46,6 +53,7 @@ namespace NonoMod.Items.Projectiles
                 Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * homingSpeed;
                 Projectile.rotation = Projectile.velocity.ToRotation();
             }
+
         }
 
         public NPC FindClosetNPC(float maxDetectectionDistance)
@@ -75,14 +83,12 @@ namespace NonoMod.Items.Projectiles
 
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.Item89, Projectile.position);
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 5; i++)
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleCrystalShard, 0f, 0f, 100, Color.MediumPurple, 2f);
-                dust.velocity *= 0.8f;
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SlimeBunny, 0f, 0f, 101, default, 2f);
+                dust.velocity *= 1.6f;
                 dust.noGravity = true;
             }
-
         }
 
 

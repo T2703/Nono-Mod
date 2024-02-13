@@ -178,3 +178,4 @@ C:\Users\Mr. Nono\Documents\My Games\Terraria\tModLoader\ModSources\NonoMod\obj\
 C:\Users\Mr. Nono\Documents\My Games\Terraria\tModLoader\ModSources\NonoMod\obj\Debug\net6.0\refint\NonoMod.dll
 C:\Users\Mr. Nono\Documents\My Games\Terraria\tModLoader\ModSources\NonoMod\obj\Debug\net6.0\NonoMod.pdb
 C:\Users\Mr. Nono\Documents\My Games\Terraria\tModLoader\ModSources\NonoMod\obj\Debug\net6.0\ref\NonoMod.dll
+C:\Users\Mr. Nono\Documents\My Games\Terraria\tModLoader\ModSources\NonoMod\obj\Debug\net6.0\NonoMod.sourcelink.json
