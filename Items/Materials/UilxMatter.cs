@@ -18,6 +18,7 @@ namespace NonoMod.Items.Materials
             Item.width = 32;
             Item.height = 32;
             Item.maxStack = 9999;
+            Item.value = Item.buyPrice(silver: 20, copper: 10);
 
         }
 

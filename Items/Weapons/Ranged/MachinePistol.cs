@@ -17,11 +17,11 @@ namespace NonoMod.Items.Weapons.Ranged
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 40;
 			Item.height = 30;
-			Item.useTime = 3;
-			Item.useAnimation = 3;
+			Item.useTime = 8;
+            Item.useAnimation = 8;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.knockBack = 4;
-            Item.value = Item.buyPrice(gold: 5);
+			Item.knockBack = 1.2f;
+            Item.value = Item.buyPrice(gold: 14);
             Item.rare = 3;
 			Item.autoReuse = true;
 			Item.noMelee = true;
@@ -34,23 +34,6 @@ namespace NonoMod.Items.Weapons.Ranged
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-5f, 2f);
-        }
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.IllegalGunParts, 1);
-            recipe.AddIngredient(ItemID.IronBar, 10);
-            recipe.AddIngredient(ItemID.Chain, 5);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
-
-            Recipe recipeAlt = CreateRecipe();
-            recipeAlt.AddIngredient(ItemID.IllegalGunParts, 1);
-            recipeAlt.AddIngredient(ItemID.LeadBar, 10);
-            recipeAlt.AddIngredient(ItemID.Chain, 5);
-            recipeAlt.AddTile(TileID.Anvils);
-            recipeAlt.Register();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

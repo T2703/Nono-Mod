@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using Microsoft.CodeAnalysis;
+using NonoMod.Buffs;
 
 namespace NonoMod.Items.Projectiles
 {
@@ -124,7 +125,7 @@ namespace NonoMod.Items.Projectiles
                 Projectile.owner);
             hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
 
-            target.AddBuff(BuffID.ShadowFlame, 150);
+            target.AddBuff(ModContent.BuffType<Unmotivated>(), 420);
 
             if (Main.rand.NextFloat() < 0.50f)
             {

@@ -11704,6 +11704,13 @@
             This class allows you to modify and use hooks for all NPCs, including vanilla mobs. Create an instance of an overriding class then call Mod.AddGlobalNPC to use this.
             </summary>
         </member>
+        <member name="M:Terraria.ModLoader.GlobalNPC.SetDefaultsFromNetId(Terraria.NPC)">
+            <summary>
+            Called after SetDefaults for NPCs with a negative <see cref="F:Terraria.NPC.netID"/><br/>
+            This hook is required because <see cref="M:Terraria.NPC.SetDefaultsFromNetId(System.Int32,Terraria.NPCSpawnParams)"/> only sets <see cref="F:Terraria.NPC.netID"/> after SetDefaults<br/>
+            Remember that <see cref="F:Terraria.NPC.type"/> does not support negative numbers and AppliesToEntity cannot distinguish between NPCs with the same type but differet netID<br/>
+            </summary>
+        </member>
         <member name="M:Terraria.ModLoader.GlobalNPC.OnSpawn(Terraria.NPC,Terraria.DataStructures.IEntitySource)">
             <summary>
             Gets called when any NPC spawns in world

@@ -117,7 +117,7 @@ namespace NonoMod.Items.Weapons.Melee
                         break;
                 }
 
-                if (Main.rand.NextFloat() < 0.25f)
+                if (Main.rand.NextFloat() < 0.03f)
                 {
                     Projectile.NewProjectile(source, mouseX, mouseY, randomVelX, randomVelY, ProjectileID.EnchantedBeam, damage * 2, knockback, player.whoAmI);
                 }
@@ -139,6 +139,7 @@ namespace NonoMod.Items.Weapons.Melee
             recipe.AddIngredient(ItemID.WoodenSword, 1);
             recipe.AddIngredient(ModContent.ItemType<ReplicaOfALegend>(), 1);
             recipe.AddIngredient(ModContent.ItemType<WritingOnTheWall>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<LazerKatana>(), 1);
             recipe.AddIngredient(ModContent.ItemType<TheWretchedSpawn>(), 1);
             recipe.AddIngredient(ModContent.ItemType<CoffeeAndCream>(), 1);
             recipe.AddIngredient(ModContent.ItemType<NumberOne>(), 1);
@@ -150,11 +151,6 @@ namespace NonoMod.Items.Weapons.Melee
             recipe.AddIngredient(ItemID.FragmentVortex, 15);
             recipe.AddIngredient(ItemID.FragmentStardust, 15);
 
-            recipe.AddIngredient(ItemID.SoulofMight, 20);
-            recipe.AddIngredient(ItemID.SoulofFright, 20);
-            recipe.AddIngredient(ItemID.SoulofSight, 20);
-
-            recipe.AddIngredient(ItemID.HallowedBar, 30);
             recipe.AddIngredient(ItemID.LunarBar, 30);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();

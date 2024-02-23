@@ -13,7 +13,7 @@ namespace NonoMod.Items.Weapons.Ranged
 {
 	public class Doomstick : ModItem
 	{
-        public float dashVelocity = 25f;
+        public float dashVelocity = 20f;
         public int dashDelay = 0;
         public int dashTimer = 0;
 
@@ -159,37 +159,6 @@ namespace NonoMod.Items.Weapons.Ranged
             return true;
         }
 
-        // Return true if it is like: Hook, CandyCaneHook, BatHook, GemHooks
-        //public override bool? SingleGrappleHook(Player player)
-        //{
-        //	return true;
-        //}
-
-
-        // Use this to kill oldest hook. For hooks that kill the oldest when shot, not when the newest latches on: Like SkeletronHand
-        // You can also change the projectile like: Dual Hook, Lunar Hook
-        //public override void UseGrapple(Player player, ref int type)
-        //{
-        //	int hooksOut = 0;
-        //	int oldestHookIndex = -1;
-        //	int oldestHookTimeLeft = 100000;
-        //	for (int i = 0; i < 1000; i++)
-        //	{
-        //		if (Main.projectile[i].active && Main.projectile[i].owner == projectile.whoAmI && Main.projectile[i].type == projectile.type)
-        //		{
-        //			hooksOut++;
-        //			if (Main.projectile[i].timeLeft < oldestHookTimeLeft)
-        //			{
-        //				oldestHookIndex = i;
-        //				oldestHookTimeLeft = Main.projectile[i].timeLeft;
-        //			}
-        //		}
-        //	}
-        //	if (hooksOut > 1)
-        //	{
-        //		Main.projectile[oldestHookIndex].Kill();
-        //	}
-        //}
 
         // Amethyst Hook is 300, Static Hook is 600
         public override float GrappleRange()
@@ -226,13 +195,15 @@ namespace NonoMod.Items.Weapons.Ranged
         {
             Doomstick doomstick = new Doomstick();
             Player player = Main.LocalPlayer;
-            doomstick.GrappleDash(player);
-            target.AddBuff(BuffID.OnFire, 1200);
+            //doomstick.GrappleDash(player);
+            //Projectile.NewProjectile(Projectile.InheritSource(Projectile), target.position.X, target.position.Y, 0, 0, ModContent.ProjectileType<GrappleBlock>(), Projectile.damage, 0, Projectile.owner);
+            Projectile.NewProjectile(Projectile.InheritSource(Projectile), target.position.X, target.position.Y, 0, 0, ProjectileID.DirtiestBlock, Projectile.damage, 0, Projectile.owner);
+            target.AddBuff(BuffID.OnFire, 1000);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(BuffID.OnFire, 1200);
+            target.AddBuff(BuffID.OnFire, 1000);
         }
 
         /*public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

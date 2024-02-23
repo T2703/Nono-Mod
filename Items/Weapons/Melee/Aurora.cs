@@ -24,7 +24,7 @@ namespace NonoMod.Items.Weapons.Melee
             Item.value = Item.buyPrice(gold: 1, silver: 50);
             Item.rare = 3;
 			Item.UseSound = SoundID.Item1;
-			Item.autoReuse = false;
+			Item.autoReuse = true;
 
         }
 

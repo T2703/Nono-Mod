@@ -40,7 +40,7 @@ namespace NonoMod.Items.Weapons.Melee
             Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax * 1.4f, adjustedItemScale);
             NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI);
 
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<EvilExcaliburBeam>(), damage * 2, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<EvilExcaliburBeam>(), damage, knockback, player.whoAmI);
 
             return true;
         }

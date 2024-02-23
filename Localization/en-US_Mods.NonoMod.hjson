@@ -69,9 +69,8 @@ Items: {
 		Tooltip:
 			'''
 			Left click to rapid slash your foes.
-			Right click to summon Sword Dance.
+			Right click to Judgement Cut.
 			25% to heal from a hit.
-			1% to heal massive HP.
 			Inflicts shadowflames.
 			Forsakened I am awakened.
 			'''
@@ -218,8 +217,14 @@ Items: {
 	}
 
 	Doomstick: {
-		Tooltip: ""
 		DisplayName: Doomstick
+		Tooltip:
+			'''
+			Left click to blast your foes.
+			Right click to use the hook.
+			Sometimes will shoot out an inferno ball.
+			The only thing they fear is you.
+			'''
 	}
 
 	EvilExcalibur: {
@@ -229,6 +234,80 @@ Items: {
 			Shoots a beam that spawns spinning scythes upon contact within an enemy.
 			Excalibur if it was, evil.
 			'''
+	}
+
+	BigAndHeavy: {
+		Tooltip: 21% chance to save ammo.
+		DisplayName: Big And Heavy
+	}
+
+	GudakoHead: {
+		Tooltip: Vanity item.
+		DisplayName: Gudako Head
+	}
+
+	TacticoolKnife: {
+		Tooltip: ""
+		DisplayName: Tacticool Knife
+	}
+
+	LazerKatana: {
+		DisplayName: Lazer Katana
+		Tooltip:
+			'''
+			Shoots out two beams left and right upon hitting an enemy.
+			Yes, it's spelled with a z because it looks cooler.
+			'''
+	}
+
+	GudakyMask: {
+		DisplayName: Gudaky Mask
+		Tooltip: Vanity item
+	}
+
+	NecoArcHead: {
+		DisplayName: Neco-Arc Head
+		Tooltip: Vanity item
+	}
+
+	NecoArcHeadChaosHead: {
+		DisplayName: Neco-Arc-Chaos Head
+		Tooltip: Vanity item
+	}
+
+	StoneSword: {
+		DisplayName: Stone Sword
+		Tooltip: ""
+	}
+
+	StonePickaxe: {
+		Tooltip: ""
+		DisplayName: Stone Pickaxe
+	}
+
+	StoneAxe: {
+		DisplayName: Stone Axe
+		Tooltip: ""
+	}
+
+	FaithQuartz: {
+		Tooltip: Artifact that can craft an unhinged summoning item.
+		DisplayName: Faith Quartz
+	}
+
+	PriestExecution: {
+		DisplayName: Priest Execution
+		Tooltip: ""
+	}
+
+	Decapitator: {
+		Tooltip: Careful with this!
+		DisplayName: Decapitator
+	}
+
+	DecapitationContraption: {
+		DisplayName: Decapitation Contraption
+		Tooltip: ""
 	}
 }
 
@@ -268,6 +347,10 @@ Projectiles: {
 	DoomstickProjectile.DisplayName: Doomstick Projectile
 	EvilExcaliburEffect.DisplayName: Evil Excalibur Effect
 	EvilExcaliburBeam.DisplayName: Evil Excalibur Beam
+	GreenKatanaBeam.DisplayName: Green Katana Beam
+	GrappleBlock.DisplayName: Grapple Block
+	PriestExecutionThrow.DisplayName: Priest Execution Throw
+	DecapitatorProjectile.DisplayName: Decapitator Projectile
 }
 
 Buffs: {
@@ -301,4 +384,21 @@ NPCs: {
 	LostOne.DisplayName: Lost One
 	GamingB.DisplayName: Gaming B
 	UilxSpirit.DisplayName: Uilx Spirit
+
+	ExoticDealer: {
+		TownNPCMood: {
+			NoHome: I hate not having a home.
+			Content: I am content.
+			FarFromHome: I am too far from home.
+			LoveSpace: I love having so much space.
+			DislikeCrowded: I dislike how crowded I am.
+			HateCrowded: I hate how crowded I am.
+			LikeNPC_Princess: I like {NPCName}.
+			Princess_LovesNPC: I like {NPCName}.
+		}
+
+		DisplayName: Exotic Dealer
+	}
+
+	SmolGudako.DisplayName: Smol Gudako
 }
