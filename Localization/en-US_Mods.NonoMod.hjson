@@ -297,7 +297,7 @@ Items: {
 
 	PriestExecution: {
 		DisplayName: Priest Execution
-		Tooltip: ""
+		Tooltip: After my skin has been destroyed, yet in my flesh, I will see God. I, myself, will see him, with my own eyes.
 	}
 
 	Decapitator: {
@@ -308,6 +308,11 @@ Items: {
 	DecapitationContraption: {
 		DisplayName: Decapitation Contraption
 		Tooltip: ""
+	}
+
+	AltPhase: {
+		Tooltip: ""
+		DisplayName: Alt Phase
 	}
 }
 
@@ -351,6 +356,12 @@ Projectiles: {
 	GrappleBlock.DisplayName: Grapple Block
 	PriestExecutionThrow.DisplayName: Priest Execution Throw
 	DecapitatorProjectile.DisplayName: Decapitator Projectile
+	MagicalBurst.DisplayName: Magical Burst
+	HealBurst.DisplayName: Heal Burst
+	WhiteSaber.DisplayName: White Saber
+	PurpleSaber.DisplayName: Purple Saber
+	PurpleSaberBeam.DisplayName: Purple Saber Beam
+	BlueSaber.DisplayName: Blue Saber
 }
 
 Buffs: {

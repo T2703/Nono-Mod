@@ -49,6 +49,7 @@ namespace NonoMod.NPCs
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FaithQuartz>(), 2, Main.rand.Next(3, 5), Main.rand.Next(6, 9)));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PriestExecution>(), 42, 1, 1));
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

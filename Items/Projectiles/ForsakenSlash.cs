@@ -137,7 +137,6 @@ namespace NonoMod.Items.Projectiles
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             Player player = Main.LocalPlayer;
-            player.Heal(5);
             Random randomChoice = new Random();
             string[] healthPool = { "1", "2", "3", "4", "5" };
 

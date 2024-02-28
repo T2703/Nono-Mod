@@ -23,7 +23,7 @@ namespace NonoMod.Items.Weapons.Melee
 			Item.useTime = 14;
 			Item.useAnimation = 14;
 			Item.useStyle = 1;
-			Item.knockBack = 4;
+			Item.knockBack = 9f;
             Item.value = Item.buyPrice(gold: 40, silver: 23, copper: 1);
             Item.rare = 5;
 			Item.autoReuse = true;
