@@ -68,10 +68,10 @@ Items: {
 		DisplayName: Forsaken
 		Tooltip:
 			'''
-			Left click to rapid slash your foes.
+			Left click to Rapid Slash your foes & to unmotivate them upon hit.
 			Right click to Judgement Cut.
-			25% to heal from a hit.
-			Inflicts shadowflames.
+			25% to heal from a Rapid Slash.
+			Heal 50 HP from the Judgement Cut's ending.
 			Forsakened I am awakened.
 			'''
 	}
@@ -311,8 +311,28 @@ Items: {
 	}
 
 	AltPhase: {
-		Tooltip: ""
+		Tooltip: It's gonna be a party with all these Sabers!
 		DisplayName: Alt Phase
+	}
+
+	FriendOfDog: {
+		Tooltip: ""
+		DisplayName: Friend Of Dog
+	}
+
+	Tommy: {
+		Tooltip: ""
+		DisplayName: Tommy
+	}
+
+	SlightMotivation: {
+		DisplayName: Slight Motivation
+		Tooltip: A motivational sword to keep you going.
+	}
+
+	MechLegends: {
+		DisplayName: Mech Legends
+		Tooltip: ""
 	}
 }
 
@@ -362,6 +382,12 @@ Projectiles: {
 	PurpleSaber.DisplayName: Purple Saber
 	PurpleSaberBeam.DisplayName: Purple Saber Beam
 	BlueSaber.DisplayName: Blue Saber
+	RedSaberSpin.DisplayName: Red Saber Spin
+	RedSaber.DisplayName: Red Saber
+	YellowSaber.DisplayName: Yellow Saber
+	OrangeSaber.DisplayName: Orange Saber
+	GreenSaber.DisplayName: Green Saber
+	SlightyMotivatedSlash.DisplayName: Slighty Motivated Slash
 }
 
 Buffs: {
@@ -388,6 +414,11 @@ Buffs: {
 	Unmotivated: {
 		Description: Mods.NonoMod.Buffs.Unmotivated.Description
 		DisplayName: Unmotivated
+	}
+
+	Damn: {
+		DisplayName: Damn
+		Description: Mods.NonoMod.Buffs.Damn.Description
 	}
 }
 

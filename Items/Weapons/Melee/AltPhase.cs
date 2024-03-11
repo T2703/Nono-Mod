@@ -15,9 +15,13 @@ namespace NonoMod.Items.Weapons.Melee
         // White - Does nothing.
         // Purple - Spawns in two purple light sabers upon death or contact.
         // Blue - Homes in on the enemy.
+        // Red - Spins around and around when hitting an enemy.
+        // Yellow - Inflicts the ichor debuff.
+        // Orange - Bounces.
+        // Green - Laser party.
 		public override void SetDefaults()
 		{
-			Item.damage = 66;
+			Item.damage = 79;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 75;
 			Item.height = 75;
@@ -26,7 +30,7 @@ namespace NonoMod.Items.Weapons.Melee
 			Item.useStyle = 1;
 			Item.knockBack = 5.6f;
 			Item.value = Item.buyPrice(gold: 4, silver: 4);
-			Item.rare = 4;
+            Item.rare = ItemRarityID.Yellow;
 			Item.UseSound = SoundID.Item15;
 			Item.autoReuse = true;
 
@@ -48,29 +52,49 @@ namespace NonoMod.Items.Weapons.Melee
 
             heading.Normalize();
 			heading *= 30;
-            heading.Y += Main.rand.Next(-40, 41) * 0.50f;
 
-            string[] saberPool = { "white", "purple", "blue" };
+            string[] saberPool = { "white", "purple", "blue", "red", "yellow", "orange", "green" };
             Random randomChoice = new Random();
-            int randomIndex = randomChoice.Next(saberPool.Length);
-            string selectedSaberPool = saberPool[randomIndex];
 
-            switch (selectedSaberPool)
+            for (int i = 0; i < 2; i++)
             {
-                case "white":
-                    Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<WhiteSaber>(), Item.damage, Item.knockBack, player.whoAmI);
-                    break;
+                heading.Y += Main.rand.Next(-40, 41) * 0.50f;
+                int randomIndex = randomChoice.Next(saberPool.Length);
+                string selectedSaberPool = saberPool[randomIndex];
 
-                case "purple":
-                    Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<PurpleSaber>(), Item.damage, Item.knockBack, player.whoAmI);
-                    break;
+                switch (selectedSaberPool)
+                {
+                    case "white":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<WhiteSaber>(), Item.damage * 2, Item.knockBack, player.whoAmI);
+                        break;
 
-                case "blue":
-                    Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<BlueSaber>(), Item.damage, Item.knockBack, player.whoAmI);
-                    break;
+                    case "purple":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<PurpleSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
 
-                default:
-                    break;
+                    case "blue":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<BlueSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "red":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<RedSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "yellow":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<YellowSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "orange":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<OrangeSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "green":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<GreenSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    default:
+                        break;
+                }
             }
 
         }
@@ -92,6 +116,46 @@ namespace NonoMod.Items.Weapons.Melee
             recipeGreen.AddIngredient(ItemID.SoulofSight, 10);
             recipeGreen.AddTile(TileID.MythrilAnvil);
             recipeGreen.Register();
+
+            Recipe recipeRed = CreateRecipe();
+            recipeRed.AddIngredient(ItemID.RedPhasesaber, 1);
+            recipeRed.AddIngredient(ItemID.SoulofMight, 10);
+            recipeRed.AddIngredient(ItemID.SoulofFright, 10);
+            recipeRed.AddIngredient(ItemID.SoulofSight, 10);
+            recipeRed.AddTile(TileID.MythrilAnvil);
+            recipeRed.Register();
+
+            Recipe recipeOrange = CreateRecipe();
+            recipeOrange.AddIngredient(ItemID.OrangePhasesaber, 1);
+            recipeOrange.AddIngredient(ItemID.SoulofMight, 10);
+            recipeOrange.AddIngredient(ItemID.SoulofFright, 10);
+            recipeOrange.AddIngredient(ItemID.SoulofSight, 10);
+            recipeOrange.AddTile(TileID.MythrilAnvil);
+            recipeOrange.Register();
+
+            Recipe recipeYellow = CreateRecipe();
+            recipeYellow.AddIngredient(ItemID.YellowPhasesaber, 1);
+            recipeYellow.AddIngredient(ItemID.SoulofMight, 10);
+            recipeYellow.AddIngredient(ItemID.SoulofFright, 10);
+            recipeYellow.AddIngredient(ItemID.SoulofSight, 10);
+            recipeYellow.AddTile(TileID.MythrilAnvil);
+            recipeYellow.Register();
+
+            Recipe recipeWhite = CreateRecipe();
+            recipeWhite.AddIngredient(ItemID.WhitePhasesaber, 1);
+            recipeWhite.AddIngredient(ItemID.SoulofMight, 10);
+            recipeWhite.AddIngredient(ItemID.SoulofFright, 10);
+            recipeWhite.AddIngredient(ItemID.SoulofSight, 10);
+            recipeWhite.AddTile(TileID.MythrilAnvil);
+            recipeWhite.Register();
+
+            Recipe recipePurple = CreateRecipe();
+            recipePurple.AddIngredient(ItemID.PurplePhasesaber, 1);
+            recipePurple.AddIngredient(ItemID.SoulofMight, 10);
+            recipePurple.AddIngredient(ItemID.SoulofFright, 10);
+            recipePurple.AddIngredient(ItemID.SoulofSight, 10);
+            recipePurple.AddTile(TileID.MythrilAnvil);
+            recipePurple.Register();
 
         }
 

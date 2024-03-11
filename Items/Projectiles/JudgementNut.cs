@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using Microsoft.CodeAnalysis;
+using NonoMod.Buffs;
 
 namespace NonoMod.Items.Projectiles
 {
@@ -39,6 +40,17 @@ namespace NonoMod.Items.Projectiles
                 player.Heal(50);
             }
 
+            target.AddBuff(ModContent.BuffType<Unmotivated>(), 420);
+
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            Player player = Main.LocalPlayer;
+
+            player.Heal(50);
+
+            target.AddBuff(ModContent.BuffType<Unmotivated>(), 420);
         }
 
         public override void AI()

@@ -178,7 +178,7 @@ namespace NonoMod.Items.Projectiles
                 Projectile.owner);
             info.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
 
-            target.AddBuff(BuffID.ShadowFlame, 150);
+            target.AddBuff(ModContent.BuffType<Unmotivated>(), 420);
 
             if (Main.rand.NextFloat() < 0.50f)
             {

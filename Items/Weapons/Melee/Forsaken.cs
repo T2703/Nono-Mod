@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using NonoMod.PlayerProp;
+using NonoMod.Rarities;
 
 namespace NonoMod.Items.Weapons.Melee
 {
@@ -25,14 +26,14 @@ namespace NonoMod.Items.Weapons.Melee
 
         public override void SetDefaults()
 		{
-			Item.damage = 420;
+			Item.damage = 666;
 			Item.DamageType = DamageClass.Melee;
             Item.useTime = 5;
             Item.useAnimation = 5;
             Item.useStyle = 1;
 			Item.knockBack = 5;
             Item.value = Item.buyPrice(platinum: 5, gold: 99);
-			Item.rare = 5;
+            Item.rare = ModContent.RarityType<ForsakenRarity>();
             Item.UseSound = new SoundStyle($"{nameof(NonoMod)}/Items/Sounds/ForsakenSlashSFX")
             {
                 Volume = 0.1f,
@@ -137,7 +138,7 @@ namespace NonoMod.Items.Weapons.Melee
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.WoodenSword, 1);
-            recipe.AddIngredient(ModContent.ItemType<ReplicaOfALegend>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<SlightMotivation>(), 1);
             recipe.AddIngredient(ModContent.ItemType<WritingOnTheWall>(), 1);
             recipe.AddIngredient(ModContent.ItemType<LazerKatana>(), 1);
             recipe.AddIngredient(ModContent.ItemType<TheWretchedSpawn>(), 1);

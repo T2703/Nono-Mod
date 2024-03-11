@@ -13,7 +13,8 @@ namespace NonoMod.Items.Weapons.Ranged
 {
 	public class Doomstick : ModItem
 	{
-        public float dashVelocity = 20f;
+        public float dashVelocityX = Main.MouseWorld.X;
+        public float dashVelocityY = Main.MouseWorld.Y;
         public int dashDelay = 0;
         public int dashTimer = 0;
 
@@ -105,11 +106,13 @@ namespace NonoMod.Items.Weapons.Ranged
 
             if (player.direction == 1)
             {
-                newVel.X = dashVelocity;
+                newVel.X = dashVelocityX;
+                //newVel.Y = dashVelocityY;
             }
             else if (player.direction == -1)
             {
-                newVel.X = -dashVelocity;
+                newVel.X = -dashVelocityX;
+                //newVel.Y = -dashVelocityY;
             }
             player.velocity = newVel;
 
@@ -132,16 +135,6 @@ namespace NonoMod.Items.Weapons.Ranged
 
         public override void SetDefaults()
         {
-            /*	this.netImportant = true;
-				this.name = "Gem Hook";
-				this.width = 18;
-				this.height = 18;
-				this.aiStyle = 7;
-				this.friendly = true;
-				this.penetrate = -1;
-				this.tileCollide = false;
-				this.timeLeft *= 10;
-			*/
             Projectile.CloneDefaults(ProjectileID.GemHookAmethyst);
         }
 
@@ -195,9 +188,9 @@ namespace NonoMod.Items.Weapons.Ranged
         {
             Doomstick doomstick = new Doomstick();
             Player player = Main.LocalPlayer;
-            //doomstick.GrappleDash(player);
+            doomstick.GrappleDash(player);
             //Projectile.NewProjectile(Projectile.InheritSource(Projectile), target.position.X, target.position.Y, 0, 0, ModContent.ProjectileType<GrappleBlock>(), Projectile.damage, 0, Projectile.owner);
-            Projectile.NewProjectile(Projectile.InheritSource(Projectile), target.position.X, target.position.Y, 0, 0, ProjectileID.DirtiestBlock, Projectile.damage, 0, Projectile.owner);
+            //Projectile.NewProjectile(Projectile.InheritSource(Projectile), target.position.X, target.position.Y, 0, 0, ProjectileID.DirtiestBlock, Projectile.damage, 0, Projectile.owner);
             target.AddBuff(BuffID.OnFire, 1000);
         }
 
@@ -205,30 +198,6 @@ namespace NonoMod.Items.Weapons.Ranged
         {
             target.AddBuff(BuffID.OnFire, 1000);
         }
-
-        /*public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            Vector2 playerCenter = Main.player[Projectile.owner].MountedCenter;
-            Vector2 center = Projectile.Center;
-            Vector2 distToProj = playerCenter - Projectile.Center;
-            float projRotation = distToProj.ToRotation() - 1.57f;
-            float distance = distToProj.Length();
-            while (distance > 30f && !float.IsNaN(distance))
-            {
-                distToProj.Normalize();                 //get unit vector
-                distToProj *= 24f;                      //speed = 24
-                center += distToProj;                   //update draw position
-                distToProj = playerCenter - center;    //update distance
-                distance = distToProj.Length();
-                Color drawColor = lightColor;
-
-                //Draw chain
-                spriteBatch.Draw(mod.GetTexture("Items/ExampleHookChain"), new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                    new Rectangle(0, 0, Main.chain30Texture.Width, Main.chain30Texture.Height), drawColor, projRotation,
-                    new Vector2(Main.chain30Texture.Width * 0.5f, Main.chain30Texture.Height * 0.5f), 1f, SpriteEffects.None, 0f); 
-            }
-            return true;
-        }*/
 
     }
 }
