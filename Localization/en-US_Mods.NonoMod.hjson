@@ -334,6 +334,24 @@ Items: {
 		DisplayName: Mech Legends
 		Tooltip: ""
 	}
+
+	GrimRipper: {
+		DisplayName: Grim Ripper
+		Tooltip:
+			'''
+			Shoots out flaming skulls that explode into small fire bursts upon enemy contact.
+			Souls shall be reaped.
+			'''
+	}
+
+	CrystalBeer: {
+		DisplayName: Crystal Beer
+		Tooltip:
+			'''
+			Minor improvements to all stats.
+			Safe to drink.
+			'''
+	}
 }
 
 Projectiles: {
@@ -388,6 +406,8 @@ Projectiles: {
 	OrangeSaber.DisplayName: Orange Saber
 	GreenSaber.DisplayName: Green Saber
 	SlightyMotivatedSlash.DisplayName: Slighty Motivated Slash
+	SkullProjectile.DisplayName: Skull Projectile
+	GrimRipperSpin.DisplayName: Grim Ripper Spin
 }
 
 Buffs: {
@@ -443,4 +463,5 @@ NPCs: {
 	}
 
 	SmolGudako.DisplayName: Smol Gudako
+	SillyBeer.DisplayName: Silly Beer
 }

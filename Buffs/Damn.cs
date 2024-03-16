@@ -59,7 +59,7 @@ namespace NonoMod.Buffs
         {
             if (damnDebuff)
             {
-                Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.RainbowRod, 0f, 0f, 10, Color.White, 2f);
+                Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.TreasureSparkle, 0f, 0f, 10, Color.White, 2f);
                 dust.scale = 0.5f;
             }
         }
