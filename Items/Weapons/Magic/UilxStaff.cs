@@ -19,7 +19,7 @@ namespace NonoMod.Items.Weapons.Magic
 
         public override void SetDefaults()
 		{
-			Item.damage = 41;
+			Item.damage = 43;
 			Item.DamageType = DamageClass.Magic;
 			Item.width = 44;
 			Item.height = 44;
@@ -28,8 +28,8 @@ namespace NonoMod.Items.Weapons.Magic
             Item.useAnimation = 18;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 4f;
-            Item.value = Item.buyPrice(gold: 7, silver: 50, copper: 50);
-            Item.rare = 4;
+            Item.value = Item.buyPrice(gold: 4, silver: 50, copper: 50);
+            Item.rare = ItemRarityID.LightRed;
 			Item.autoReuse = true;
 			Item.noMelee = true;
             Item.shootSpeed = 12.5f;

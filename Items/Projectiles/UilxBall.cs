@@ -22,6 +22,7 @@ namespace NonoMod.Items.Projectiles
             Projectile.tileCollide = true;
             Projectile.penetrate = 1;
             Projectile.aiStyle = -1;
+            Projectile.timeLeft = 690;
             Projectile.ignoreWater = true;
 
         }

@@ -10,26 +10,26 @@ using Terraria.Audio;
 
 namespace NonoMod.Items.Projectiles
 {
-	public class GrimRipperSpin : ModProjectile
+	public class TrickOrTreat : ModProjectile
 	{
 
         public override void SetDefaults()
 		{
-            Projectile.width = 65;
-            Projectile.height = 65;
+            Projectile.width = 87;
+            Projectile.height = 160;
             Projectile.DamageType = DamageClass.Magic;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
-            Projectile.penetrate = -1;
+            Projectile.ignoreWater = true;
+            Projectile.penetrate = 1;
+            Projectile.timeLeft = 200;
+            Projectile.aiStyle = -1;
     
         }
 
         public override void AI()
         {
-            Projectile.rotation += 0.8f;
-            Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 101, default, 2f);
-            dust.velocity *= 0.8f;
-         
+            Projectile.rotation = Projectile.velocity.ToRotation();
         }
 
 

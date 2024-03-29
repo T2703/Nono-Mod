@@ -22,8 +22,8 @@ namespace NonoMod.Items.Weapons.Melee
 			Item.useAnimation = 18;
 			Item.useStyle = 1;
 			Item.knockBack = 9.4f;
-			Item.value = Item.buyPrice(gold: 7, silver: 50, copper: 50);
-            Item.rare = 3;
+			Item.value = Item.buyPrice(gold: 3, silver: 60);
+            Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = SoundID.Item71;
             Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<UilxBladeBeam>();

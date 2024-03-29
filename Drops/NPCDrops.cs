@@ -29,6 +29,11 @@ namespace NonoMod.Drops
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AngelThanatos>(), 25, 1, 1));
             }
+
+            if(npc.type == NPCID.Parrot)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StutteringParrot>(), 26, 1, 1));
+            }
         }
     }
 }

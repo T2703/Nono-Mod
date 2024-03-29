@@ -13,8 +13,7 @@ namespace NonoMod.Items.Weapons.Ranged
 {
 	public class Doomstick : ModItem
 	{
-        public float dashVelocityX = Main.MouseWorld.X;
-        public float dashVelocityY = Main.MouseWorld.Y;
+        public float dashVelocity = 18f;
         public int dashDelay = 0;
         public int dashTimer = 0;
 
@@ -52,13 +51,19 @@ namespace NonoMod.Items.Weapons.Ranged
         {
             if (player.altFunctionUse == 2)
             {
-                Item.useTime = 8;
-                Item.useAnimation = 8;
+                Item.useTime = 14;
+                Item.useAnimation = 14;
+                Item.UseSound = SoundID.Item71;
             }
             else
             {
                 Item.useTime = 80;
                 Item.useAnimation = 80;
+                Item.UseSound = new SoundStyle($"{nameof(NonoMod)}/Items/Sounds/SSGShootSFX")
+                {
+                    Volume = 0.8f,
+                    MaxInstances = 10,
+                };
             }
 
             return true;
@@ -106,15 +111,23 @@ namespace NonoMod.Items.Weapons.Ranged
 
             if (player.direction == 1)
             {
-                newVel.X = dashVelocityX;
-                //newVel.Y = dashVelocityY;
+                newVel.X = dashVelocity;
+                if (player.position.Y > 0)
+                {
+                    newVel.Y = -7f;
+                }
             }
             else if (player.direction == -1)
             {
-                newVel.X = -dashVelocityX;
-                //newVel.Y = -dashVelocityY;
+                newVel.X = -dashVelocity;
+                if (player.position.Y > 0)
+                {
+                    newVel.Y = -7f;
+                }
             }
             player.velocity = newVel;
+            player.immune = true;
+            player.immuneTime = 30;
 
 
             if (dashDelay > 0)
@@ -138,20 +151,11 @@ namespace NonoMod.Items.Weapons.Ranged
             Projectile.CloneDefaults(ProjectileID.GemHookAmethyst);
         }
 
-        // Use this hook for hooks that can have multiple hooks mid-flight: Dual Hook, Web Slinger, Fish Hook, Static Hook, Lunar Hook
-        public override bool? CanUseGrapple(Player player)
+        public override void SetStaticDefaults()
         {
-            int hooksOut = 0;
-            for (int l = 0; l < 1000; l++)
-            {
-                if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == Projectile.type)
-                {
-                    hooksOut++;
-                }
-            }
-            return true;
+            // If you wish for your hook projectile to have ONE copy of it PER player, uncomment this section.
+            ProjectileID.Sets.SingleGrappleHook[Type] = true;
         }
-
 
         // Amethyst Hook is 300, Static Hook is 600
         public override float GrappleRange()

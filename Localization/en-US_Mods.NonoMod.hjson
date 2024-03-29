@@ -352,6 +352,30 @@ Items: {
 			Safe to drink.
 			'''
 	}
+
+	DarkMinds: {
+		DisplayName: Dark Minds
+		Tooltip: ""
+	}
+
+	UilxCrossbow: {
+		Tooltip: Shoots out a Uilx Orb that explodes into Uilx Balls
+		DisplayName: Uilx Crossbow
+	}
+
+	OldBlades: {
+		DisplayName: Old Blades
+		Tooltip: Shoots out old relics of the past.
+	}
+
+	StutteringParrot: {
+		DisplayName: Stuttering Parrot
+		Tooltip:
+			'''
+			You really sound like a stuttering parrot.
+			WARNING: COULD BE VERY LOUD.
+			'''
+	}
 }
 
 Projectiles: {
@@ -408,6 +432,12 @@ Projectiles: {
 	SlightyMotivatedSlash.DisplayName: Slighty Motivated Slash
 	SkullProjectile.DisplayName: Skull Projectile
 	GrimRipperSpin.DisplayName: Grim Ripper Spin
+	DarkDragon.DisplayName: Dark Dragon
+	DarkSparks.DisplayName: Dark Sparks
+	UilxOrb.DisplayName: Uilx Orb
+	OldEdge.DisplayName: Old Edge
+	OldExcalibur.DisplayName: Old Excalibur
+	TrickOrTreat.DisplayName: Trick Or Treat
 }
 
 Buffs: {
