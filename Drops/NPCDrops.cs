@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using NonoMod.Items.Materials;
 using NonoMod.Items.Weapons.Magic;
 using NonoMod.Items.Weapons.Melee;
 using Terraria;
@@ -12,6 +13,7 @@ namespace NonoMod.Drops
 {
 	public class NPCDrops : GlobalNPC
     {
+        // Code to surpass YanDev's code.
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             if (npc.type == NPCID.ChaosElemental)
@@ -33,6 +35,11 @@ namespace NonoMod.Drops
             if(npc.type == NPCID.Parrot)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StutteringParrot>(), 26, 1, 1));
+            }
+
+            if (npc.type == NPCID.MoonLordCore)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PowerfulArtifact>(), 5, 1, 1));
             }
         }
     }

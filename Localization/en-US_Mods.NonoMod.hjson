@@ -376,6 +376,30 @@ Items: {
 			WARNING: COULD BE VERY LOUD.
 			'''
 	}
+
+	PowerfulArtifact: {
+		Tooltip: Intense power!
+		DisplayName: Powerful Artifact
+	}
+
+	RedTuesday: {
+		DisplayName: Red Tuesday
+		Tooltip: "\t"
+	}
+
+	ToyGun: {
+		DisplayName: Toy Gun
+		Tooltip: ""
+	}
+
+	BlackHoleSun: {
+		DisplayName: Black Hole Sun
+		Tooltip:
+			'''
+			Black hole sun won't you come and wash away the rain?
+			Shoots out a mini black hole that spawns a black hole upon death that sucks in enemies 
+			'''
+	}
 }
 
 Projectiles: {
@@ -438,6 +462,13 @@ Projectiles: {
 	OldEdge.DisplayName: Old Edge
 	OldExcalibur.DisplayName: Old Excalibur
 	TrickOrTreat.DisplayName: Trick Or Treat
+	PowerfulAxe.DisplayName: Powerful Axe
+	PowerfulBeam.DisplayName: Powerful Beam
+	PowerfulSword2.DisplayName: Powerful Sword2
+	PowerfulSword.DisplayName: Powerful Sword
+	ToyBullet.DisplayName: Toy Bullet
+	Blackhole.DisplayName: Blackhole
+	SunHole.DisplayName: Sun Hole
 }
 
 Buffs: {

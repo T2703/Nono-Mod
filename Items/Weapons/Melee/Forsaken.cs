@@ -11,6 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using NonoMod.PlayerProp;
 using NonoMod.Rarities;
+using NonoMod.Items.Materials;
 
 namespace NonoMod.Items.Weapons.Melee
 {
@@ -76,7 +77,7 @@ namespace NonoMod.Items.Weapons.Melee
             if (player.altFunctionUse == 2 && !player.HasBuff(ModContent.BuffType<JudgementCutCooldown>())) //!player.HasBuff(ModContent.BuffType<SwordDanceCooldown>())
             {
                 player.AddBuff(ModContent.BuffType<Motivation>(), 1250);
-                player.AddBuff(ModContent.BuffType<JudgementCutCooldown>(), 5000);
+                player.AddBuff(ModContent.BuffType<JudgementCutCooldown>(), 9000);
 
                 SoundStyle JudgementCutRelease = new SoundStyle($"{nameof(NonoMod)}/Items/Sounds/ForsakenJudgeSFX")
                 {
@@ -139,20 +140,13 @@ namespace NonoMod.Items.Weapons.Melee
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.WoodenSword, 1);
             recipe.AddIngredient(ModContent.ItemType<SlightMotivation>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<WritingOnTheWall>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<LazerKatana>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<TheWretchedSpawn>(), 1);
             recipe.AddIngredient(ModContent.ItemType<CoffeeAndCream>(), 1);
             recipe.AddIngredient(ModContent.ItemType<NumberOne>(), 1);
             recipe.AddIngredient(ModContent.ItemType<AngelThanatos>(), 1);
             recipe.AddIngredient(ModContent.ItemType<EvilExcalibur>(), 1);
 
-            recipe.AddIngredient(ItemID.FragmentSolar, 15);
-            recipe.AddIngredient(ItemID.FragmentNebula, 15);
-            recipe.AddIngredient(ItemID.FragmentVortex, 15);
-            recipe.AddIngredient(ItemID.FragmentStardust, 15);
+            recipe.AddIngredient(ModContent.ItemType<PowerfulArtifact>(), 1);
 
-            recipe.AddIngredient(ItemID.LunarBar, 30);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
 

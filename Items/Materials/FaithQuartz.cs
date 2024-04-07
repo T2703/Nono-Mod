@@ -25,7 +25,7 @@ namespace NonoMod.Items.Materials
             Item.height = 30;
             Item.maxStack = 9999;
             Item.value = Item.buyPrice(silver: 25, copper: 10);
-
+            Item.rare = ItemRarityID.Green;
         }
 
         public override void PostUpdate()
