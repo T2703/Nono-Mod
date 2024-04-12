@@ -99,6 +99,63 @@ namespace NonoMod.Items.Weapons.Melee
 
         }
 
+        public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
+        {
+            var source = player.GetSource_ItemUse(Item);
+            Vector2 targetVec = new Vector2(target.position.X, target.position.Y);
+
+            Vector2 position = player.Center - new Vector2(Main.rand.NextFloat(401) * player.direction, 600f);
+            position.Y -= 100;
+            Vector2 heading = targetVec - position;
+
+            heading.Normalize();
+            heading *= 30;
+
+            string[] saberPool = { "white", "purple", "blue", "red", "yellow", "orange", "green" };
+            Random randomChoice = new Random();
+
+            for (int i = 0; i < 2; i++)
+            {
+                heading.Y += Main.rand.Next(-40, 41) * 0.50f;
+                int randomIndex = randomChoice.Next(saberPool.Length);
+                string selectedSaberPool = saberPool[randomIndex];
+
+                switch (selectedSaberPool)
+                {
+                    case "white":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<WhiteSaber>(), Item.damage * 2, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "purple":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<PurpleSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "blue":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<BlueSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "red":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<RedSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "yellow":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<YellowSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "orange":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<OrangeSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    case "green":
+                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<GreenSaber>(), Item.damage, Item.knockBack, player.whoAmI);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
         public override void AddRecipes()
         {
             Recipe recipeBlue = CreateRecipe();

@@ -35,7 +35,7 @@ namespace NonoMod.Items.Weapons.Melee
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.HallowSpray, 0.2f, 0f, 0, default, 1f);
+            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.HallowedWeapons, 0.2f, 0f, 0, default, 1f);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].scale = 1f;
         }

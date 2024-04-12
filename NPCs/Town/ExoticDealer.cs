@@ -94,6 +94,12 @@ namespace NonoMod.NPCs.Town
                 .Add<Items.Weapons.Ranged.BigAndHeavy>()
                 .Add<Items.Weapons.Ranged.MachinePistol>()
                 .Add<Items.Weapons.Melee.LazerKatana>();
+            
+            if (NPC.downedMechBossAny)
+            {
+                npcShop.Add<Items.Materials.ExoticGunParts>();
+                npcShop.Add<Items.RifleGrenade>();
+            }
             npcShop.Register();
         }
 

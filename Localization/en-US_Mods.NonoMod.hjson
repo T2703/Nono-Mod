@@ -397,8 +397,37 @@ Items: {
 		Tooltip:
 			'''
 			Black hole sun won't you come and wash away the rain?
-			Shoots out a mini black hole that spawns a black hole upon death that sucks in enemies 
+			Shoots out a mini black hole that spawns a black hole upon death that sucks in enemies.
 			'''
+	}
+
+	Cartnite: {
+		Tooltip: May or may not be safe to smoke.
+		DisplayName: Cartnite
+	}
+
+	ExoticGunParts: {
+		DisplayName: Exotic Gun Parts
+		Tooltip: ""
+	}
+
+	SpecialRifle: {
+		DisplayName: Special Rifle
+		Tooltip:
+			'''
+			Converts musket balls into high velocity rounds.
+			Right click to shoot out a grenade, uses Rifle Grenade as ammo.
+			'''
+	}
+
+	RifleGrenade: {
+		Tooltip: ""
+		DisplayName: Rifle Grenade
+	}
+
+	BulletHell: {
+		Tooltip: ""
+		DisplayName: Bullet Hell
 	}
 }
 

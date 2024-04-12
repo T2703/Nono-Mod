@@ -143,6 +143,7 @@ namespace NonoMod.Items.Weapons.Melee
             recipe.AddIngredient(ModContent.ItemType<CoffeeAndCream>(), 1);
             recipe.AddIngredient(ModContent.ItemType<NumberOne>(), 1);
             recipe.AddIngredient(ModContent.ItemType<AngelThanatos>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<BlackHoleSun>(), 1);
             recipe.AddIngredient(ModContent.ItemType<EvilExcalibur>(), 1);
 
             recipe.AddIngredient(ModContent.ItemType<PowerfulArtifact>(), 1);

@@ -45,6 +45,7 @@ namespace NonoMod.NPCs
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CrystalBeer>(), 3, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Cartnite>(), 6, 1, 1));
 
         }
 
