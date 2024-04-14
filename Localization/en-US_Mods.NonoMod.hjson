@@ -429,6 +429,11 @@ Items: {
 		Tooltip: ""
 		DisplayName: Bullet Hell
 	}
+
+	BlackHoleCross: {
+		DisplayName: Black Hole Cross
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -498,6 +503,7 @@ Projectiles: {
 	ToyBullet.DisplayName: Toy Bullet
 	Blackhole.DisplayName: Blackhole
 	SunHole.DisplayName: Sun Hole
+	Blackholecross.DisplayName: Blackholecross
 }
 
 Buffs: {
