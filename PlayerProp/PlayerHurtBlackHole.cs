@@ -24,13 +24,23 @@ namespace NonoMod.PlayerProp
         public override void PostHurt(Player.HurtInfo info)
         {
             var source = Player.GetSource_FromThis();
+            float blackHoleX;
             if (!hasBlackHoleCross)
             {
                 return;
             }
             else
             {
-                Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, 0, 0, ModContent.ProjectileType<Blackholecross>(), 50, 0f, Player.whoAmI);
+                if (Player.direction == 1)
+                {
+                    blackHoleX = 5f;
+                }
+                else
+                {
+                    blackHoleX = -5f;
+                }
+
+                Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, blackHoleX, 0, ModContent.ProjectileType<Blackholecross>(), 50, 0f, Player.whoAmI);
             }
         }
     }

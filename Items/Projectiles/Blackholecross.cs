@@ -22,7 +22,7 @@ namespace NonoMod.Items.Projectiles
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 140;
+            Projectile.timeLeft = 245;
             Projectile.aiStyle = -1;
 
         }
@@ -44,7 +44,7 @@ namespace NonoMod.Items.Projectiles
                     float npcDist = Math.Abs(Projectile.position.X + (Projectile.width / 2) - npcCenterX) + Math.Abs(Projectile.position.Y + (Projectile.height / 2) - npcCenterY);
 
                     // Checks if this is within range.
-                    if (npcDist <= 600f)
+                    if (npcDist <= 1800f)
                     {
                         // Baiscally where the sucking in happens.
                         if (npc.position.X < Projectile.Center.X)
@@ -53,16 +53,16 @@ namespace NonoMod.Items.Projectiles
                         }
                         else
                         {
-                            npc.velocity.X -= 0.05f;
+                            npc.velocity.X -= 0.10f;
                         }
 
                         if (npc.position.Y < Projectile.Center.Y)
                         {
-                            npc.velocity.Y += 0.05f;
+                            npc.velocity.Y += 0.10f;
                         }
                         else
                         {
-                            npc.velocity.Y -= 0.05f;
+                            npc.velocity.Y -= 0.10f;
                         }
                     }
                 }
