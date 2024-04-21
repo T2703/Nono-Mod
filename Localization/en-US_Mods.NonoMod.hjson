@@ -434,6 +434,36 @@ Items: {
 		DisplayName: Black Hole Cross
 		Tooltip: ""
 	}
+
+	RocketoPunch: {
+		Tooltip: Casts a controllable rocket punch that explodes on impact.
+		DisplayName: Rocketo Punch
+	}
+
+	Phantom90: {
+		DisplayName: Phantom90
+		Tooltip:
+			'''
+			10% chance to save ammo.
+			Shoots out a barrage of ghost bullets.
+			Was once used to take down a mech.
+			'''
+	}
+
+	NanomachinesSon: {
+		DisplayName: Nanomachines Son
+		Tooltip:
+			'''
+			Slightly increases health regen.
+			Increases defense by 10.
+			Grants immunity to knockback.
+			'''
+	}
+
+	DemonPoints: {
+		Tooltip: ""
+		DisplayName: Demon Points
+	}
 }
 
 Projectiles: {
@@ -504,6 +534,8 @@ Projectiles: {
 	Blackhole.DisplayName: Blackhole
 	SunHole.DisplayName: Sun Hole
 	Blackholecross.DisplayName: Blackholecross
+	RocketoPunchP.DisplayName: Rocketo Punch P
+	Phantom90Bullet.DisplayName: Phantom90 Bullet
 }
 
 Buffs: {
@@ -560,4 +592,5 @@ NPCs: {
 
 	SmolGudako.DisplayName: Smol Gudako
 	SillyBeer.DisplayName: Silly Beer
+	DemonMan.DisplayName: Demon Man
 }
