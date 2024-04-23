@@ -464,6 +464,11 @@ Items: {
 		Tooltip: ""
 		DisplayName: Demon Points
 	}
+
+	HakkaNoTogame: {
+		Tooltip: ""
+		DisplayName: Hakka No Togame
+	}
 }
 
 Projectiles: {
@@ -536,6 +541,7 @@ Projectiles: {
 	Blackholecross.DisplayName: Blackholecross
 	RocketoPunchP.DisplayName: Rocketo Punch P
 	Phantom90Bullet.DisplayName: Phantom90 Bullet
+	IceSpray.DisplayName: Ice Spray
 }
 
 Buffs: {
@@ -567,6 +573,11 @@ Buffs: {
 	Damn: {
 		DisplayName: Damn
 		Description: Mods.NonoMod.Buffs.Damn.Description
+	}
+
+	Freeze: {
+		DisplayName: Freeze
+		Description: Mods.NonoMod.Buffs.Freeze.Description
 	}
 }
 

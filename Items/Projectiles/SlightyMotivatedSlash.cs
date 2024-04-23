@@ -16,7 +16,7 @@ namespace NonoMod.Items.Projectiles
 	{
         public override void SetStaticDefaults()
         {
-            Main.projFrames[Projectile.type] = 4; // So it's only the dust.
+            Main.projFrames[Projectile.type] = 4; // So it's only the dust. I mean I could rework this and make it cleaner but idk it works.
         }
 
         public override void SetDefaults()

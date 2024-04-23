@@ -45,7 +45,7 @@ namespace NonoMod.NPCs
                 return 0f;
             }
 
-            return SpawnCondition.Underworld.Chance * 0.28f;
+            return SpawnCondition.Underworld.Chance * 0.29f;
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
