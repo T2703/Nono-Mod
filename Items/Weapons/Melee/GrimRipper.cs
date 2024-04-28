@@ -12,6 +12,11 @@ namespace NonoMod.Items.Weapons.Melee
 	public class GrimRipper : ModItem
 	{
         // One of Dead Rising 3 broken weapons and I love it so I decided to make it I think.
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+        }
+
         public override void SetDefaults()
 		{
 			Item.damage = 66;
@@ -39,11 +44,40 @@ namespace NonoMod.Items.Weapons.Melee
         public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
         {
             target.AddBuff(BuffID.OnFire, 360);
+
+            if (player.altFunctionUse == 2)
+            {
+                modifiers.SourceDamage *= 2;
+            }
         }
 
         public override void ModifyHitPvp(Player player, Player target, ref Player.HurtModifiers modifiers)
         {
             target.AddBuff(BuffID.OnFire, 360);
+
+            if (player.altFunctionUse == 2)
+            {
+                modifiers.SourceDamage *= 2;
+            }
+        }
+
+        public override bool AltFunctionUse(Player player) => true;
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                // True melee ish
+                Item.shoot = ProjectileID.None;
+                Item.shootSpeed = 0f;
+            }
+            else
+            {
+                Item.shoot = ModContent.ProjectileType<SkullProjectile>();
+                Item.shootSpeed = 16.6f;
+            }
+
+            return base.CanUseItem(player);
         }
 
         public override void AddRecipes()

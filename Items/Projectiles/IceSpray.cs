@@ -45,15 +45,24 @@ namespace NonoMod.Items.Projectiles
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Frostburn, 800);
-            target.AddBuff(ModContent.BuffType<Freeze>(), 300); // For the npcs
+            SoundEngine.PlaySound(SoundID.Item50, Projectile.position);
+
+            if (Main.rand.NextFloat() < 0.20f)
+            {
+                target.AddBuff(ModContent.BuffType<Freeze>(), 250); // For the npcs
+            }
 
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(BuffID.Frostburn, 800);
+            SoundEngine.PlaySound(SoundID.Item50, Projectile.position);
 
-            target.AddBuff(BuffID.Frozen, 300); // Cause debuff works on player only.
+            if (Main.rand.NextFloat() < 0.20f)
+            {
+                target.AddBuff(BuffID.Frozen, 250); // Cause debuff works on player only.
+            }
 
         }
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NonoMod")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08c3092185871c0745d4d0ddc13749f6681be3b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("NonoMod")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NonoMod")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -340,6 +340,7 @@ Items: {
 		Tooltip:
 			'''
 			Shoots out flaming skulls that explode into small fire bursts upon enemy contact.
+			Right click for true melee.
 			Souls shall be reaped.
 			'''
 	}
@@ -466,8 +467,18 @@ Items: {
 	}
 
 	HakkaNoTogame: {
-		Tooltip: ""
 		DisplayName: Hakka No Togame
+		Tooltip:
+			'''
+			Left click to shoot out a spray of ice that inflicts frostburn and has a chance to freeze enemies.
+			Right click for true melee.
+			We stand in awe before that which can not be seen.
+			'''
+	}
+
+	MRS7: {
+		DisplayName: MRS7
+		Tooltip: ""
 	}
 }
 

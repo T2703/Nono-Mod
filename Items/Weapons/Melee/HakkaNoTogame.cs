@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using NonoMod.Buffs;
 using NonoMod.Items.Projectiles;
 using Terraria;
 using Terraria.Audio;
@@ -10,6 +11,10 @@ namespace NonoMod.Items.Weapons.Melee
 {
 	public class HakkaNoTogame : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+        }
 
         public override void SetDefaults()
 		{
@@ -46,6 +51,41 @@ namespace NonoMod.Items.Weapons.Melee
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
             target.AddBuff(BuffID.Frostburn, 800);
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                // True melee ish
+                Item.shoot = ProjectileID.None;
+                Item.shootSpeed = 0f;
+            }
+            else
+            {
+                Item.shoot = ModContent.ProjectileType<IceSpray>();
+                Item.shootSpeed = 18f;
+            }
+
+            return base.CanUseItem(player);
+        }
+
+        public override bool AltFunctionUse(Player player) => true;
+
+        public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                modifiers.SourceDamage *= 2;
+            };
+        }
+
+        public override void ModifyHitPvp(Player player, Player target, ref Player.HurtModifiers modifiers)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                modifiers.SourceDamage *= 2;
+            }
         }
 
         public override void AddRecipes()
