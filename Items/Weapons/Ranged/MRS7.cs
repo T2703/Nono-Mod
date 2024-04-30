@@ -33,8 +33,14 @@ namespace NonoMod.Items.Weapons.Ranged
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(0f, 5f);
+            return new Vector2(-10f, 0f);
         }
+
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
 			Vector2 muzzleOffset = Vector2.Normalize(velocity) * 2f;

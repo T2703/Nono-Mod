@@ -47,7 +47,7 @@ namespace NonoMod.Items.Projectiles
             target.AddBuff(BuffID.Frostburn, 800);
             SoundEngine.PlaySound(SoundID.Item50, Projectile.position);
 
-            if (Main.rand.NextFloat() < 0.20f)
+            if (Main.rand.NextFloat() < 0.20f && !target.HasBuff(ModContent.BuffType<Freeze>()))
             {
                 target.AddBuff(ModContent.BuffType<Freeze>(), 250); // For the npcs
             }
@@ -59,7 +59,7 @@ namespace NonoMod.Items.Projectiles
             target.AddBuff(BuffID.Frostburn, 800);
             SoundEngine.PlaySound(SoundID.Item50, Projectile.position);
 
-            if (Main.rand.NextFloat() < 0.20f)
+            if (Main.rand.NextFloat() < 0.20f && !target.HasBuff(BuffID.Frozen))
             {
                 target.AddBuff(BuffID.Frozen, 250); // Cause debuff works on player only.
             }
