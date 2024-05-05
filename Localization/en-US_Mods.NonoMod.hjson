@@ -553,6 +553,7 @@ Projectiles: {
 	RocketoPunchP.DisplayName: Rocketo Punch P
 	Phantom90Bullet.DisplayName: Phantom90 Bullet
 	IceSpray.DisplayName: Ice Spray
+	Edge.DisplayName: Edge
 }
 
 Buffs: {

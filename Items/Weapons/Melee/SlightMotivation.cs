@@ -35,6 +35,7 @@ namespace NonoMod.Items.Weapons.Melee
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+
             Random randomChoice = new Random();
             string[] slashDirection = { "X", "Y", "XY" };
             int randomIndex = randomChoice.Next(slashDirection.Length);
@@ -46,24 +47,39 @@ namespace NonoMod.Items.Weapons.Melee
             float randomVelX = (Main.rand.Next(2) == 0) ? -10f : 12f;
             float randomVelY = (Main.rand.Next(2) == 0) ? -10f : 12f;
 
-            switch (selectedDirection)
+            if (player.altFunctionUse == 2)
             {
-              case "X":
-                Projectile.NewProjectile(source, mouseX, mouseY, randomVelX, 0, ModContent.ProjectileType<SlightyMotivatedSlash>(), damage, knockback, player.whoAmI);
-                break;
-              case "Y":
-                Projectile.NewProjectile(source, mouseX, mouseY, 0, randomVelY, ModContent.ProjectileType<SlightyMotivatedSlash>(), damage, knockback, player.whoAmI);
-                break;
-              case "XY":
-                Projectile.NewProjectile(source, mouseX, mouseY, randomVelX, randomVelY, ModContent.ProjectileType<SlightyMotivatedSlash>(), damage, knockback, player.whoAmI);
-                break;
-              default:
-                break;
+                if (player.direction == 1)
+                {
+                    Projectile.NewProjectile(source, position.X, position.Y, 17f, velocity.Y, ModContent.ProjectileType<Edge>(), damage, knockback, player.whoAmI);
+                }
+                else if (player.direction == -1)
+                {
+                    Projectile.NewProjectile(source, position.X, position.Y, -17f, velocity.Y, ModContent.ProjectileType<Edge>(), damage, knockback, player.whoAmI);
+                }
             }
-
+            else
+            {
+                switch (selectedDirection)
+                {
+                    case "X":
+                        Projectile.NewProjectile(source, mouseX, mouseY, randomVelX, 0, ModContent.ProjectileType<SlightyMotivatedSlash>(), damage, knockback, player.whoAmI);
+                        break;
+                    case "Y":
+                        Projectile.NewProjectile(source, mouseX, mouseY, 0, randomVelY, ModContent.ProjectileType<SlightyMotivatedSlash>(), damage, knockback, player.whoAmI);
+                        break;
+                    case "XY":
+                        Projectile.NewProjectile(source, mouseX, mouseY, randomVelX, randomVelY, ModContent.ProjectileType<SlightyMotivatedSlash>(), damage, knockback, player.whoAmI);
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             return true;
         }
+
+        public override bool AltFunctionUse(Player player) => true;
 
         public override void AddRecipes()
         {
