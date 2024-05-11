@@ -29,21 +29,17 @@ namespace NonoMod.Items.Projectiles
 
         public override void AI()
         {
-            Projectile.rotation += 1f;
+            Projectile.rotation += 0.5f;
             Lighting.AddLight(Projectile.Center, 0f, 0.5f, 1f);
 
             float maxDetectection = 360f;
             float homingSpeed = 30f;
 
             NPC closestNPC = FindClosetNPC(maxDetectection);
-            if (closestNPC == null)
-            {
-                Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X);
-            }
-            else
+            if (closestNPC != null)
             {
                 Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * homingSpeed;
-                Projectile.rotation = Projectile.velocity.ToRotation();
+                //Projectile.rotation = Projectile.velocity.ToRotation();
             }
         }
 

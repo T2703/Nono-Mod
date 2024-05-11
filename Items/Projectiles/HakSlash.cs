@@ -15,7 +15,6 @@ namespace NonoMod.Items.Projectiles
 {
 	public class HakSlash : ModProjectile
 	{
-        // The Display Name and Tooltip of this item can be edited in the Localization/en-US_Mods.NonoMod.hjson file.
 
         public override void SetStaticDefaults()
         {
@@ -27,21 +26,19 @@ namespace NonoMod.Items.Projectiles
             Projectile.width = 60;
             Projectile.height = 60;
             Projectile.DamageType = DamageClass.Melee;
-            Projectile.damage = 150;
             Projectile.friendly = true;
-            Projectile.aiStyle = 20;
+            Projectile.aiStyle = 0;
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
-            Projectile.soundDelay = int.MaxValue;
-            Projectile.scale = 4.5f;
+            Projectile.scale = 1f;
+            Projectile.timeLeft = 65;
 
         }
 
         public override void AI()
         {
-            Lighting.AddLight(Projectile.position, 255, 0, 0);
             //Lighting.Brightness(1, 1);
-            Projectile.velocity *= 0.30f;
+            Projectile.rotation += 1f;
             Projectile.soundDelay = 120;
             SoundEngine.PlaySound(SoundID.Item15, Projectile.position);
 
@@ -55,82 +52,10 @@ namespace NonoMod.Items.Projectiles
                 }
             }
 
-            Projectile.soundDelay = int.MaxValue;
-
-            Projectile.direction = (Projectile.spriteDirection = ((Projectile.velocity.X > 0f) ? 1 : -1));
-            Projectile.rotation = Projectile.velocity.ToRotation();
-
-            if (Projectile.velocity.Y > 16f)
-            {
-                Projectile.velocity.Y = 16f;
-            }
-
-            if (Projectile.spriteDirection == -1)
-            {
-                Projectile.rotation += MathHelper.Pi;
-            }
                 
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            Random randomChoice = new Random();
 
-            string[] fireDebuffs = { "OnFire", "CursedInferno", "Frostburn" };
-
-            if (!target.HasBuff(BuffID.OnFire) && !target.HasBuff(BuffID.CursedInferno) && !target.HasBuff(BuffID.Frostburn))
-            {
-                int randomIndex = randomChoice.Next(fireDebuffs.Length);
-                string selectedDebuff = fireDebuffs[randomIndex];
-
-                switch (selectedDebuff)
-                {
-                    case "OnFire":
-                        target.AddBuff(BuffID.OnFire, 100);
-                        break;
-
-                    case "CursedInferno":
-                        target.AddBuff(BuffID.CursedInferno, 100);
-                        break;
-
-                    case "Frostburn":
-                        target.AddBuff(BuffID.Frostburn, 100);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        public override void OnHitPlayer(Player target, Player.HurtInfo info)
-        {
-            Random randomChoice = new Random();
-
-            string[] fireDebuffs = { "OnFire", "CursedInferno", "Frostburn" };
-
-            if (!target.HasBuff(BuffID.OnFire) && !target.HasBuff(BuffID.CursedInferno) && !target.HasBuff(BuffID.Frostburn))
-            {
-                int randomIndex = randomChoice.Next(fireDebuffs.Length);
-                string selectedDebuff = fireDebuffs[randomIndex];
-
-                switch (selectedDebuff)
-                {
-                    case "OnFire":
-                        target.AddBuff(BuffID.OnFire, 100);
-                        break;
-
-                    case "CursedInferno":
-                        target.AddBuff(BuffID.CursedInferno, 100);
-                        break;
-
-                    case "Frostburn":
-                        target.AddBuff(BuffID.Frostburn, 100);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
 
         public override bool PreDraw(ref Color lightColor)
         {

@@ -480,6 +480,11 @@ Items: {
 		DisplayName: MRS7
 		Tooltip: ""
 	}
+
+	RedJetstream: {
+		Tooltip: ""
+		DisplayName: Red Jetstream
+	}
 }
 
 Projectiles: {
@@ -591,6 +596,11 @@ Buffs: {
 		DisplayName: Freeze
 		Description: Mods.NonoMod.Buffs.Freeze.Description
 	}
+
+	EdgeCooldown: {
+		DisplayName: Edge Cooldown
+		Description: Mods.NonoMod.Buffs.EdgeCooldown.Description
+	}
 }
 
 NPCs: {
@@ -616,4 +626,5 @@ NPCs: {
 	SmolGudako.DisplayName: Smol Gudako
 	SillyBeer.DisplayName: Silly Beer
 	DemonMan.DisplayName: Demon Man
+	Jetstream.DisplayName: Jetstream
 }

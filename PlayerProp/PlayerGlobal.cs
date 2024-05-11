@@ -86,6 +86,7 @@ namespace NonoMod.PlayerProp
                 dashTimer--;
             }
 
+
         }
 
         public bool CanUseDash()

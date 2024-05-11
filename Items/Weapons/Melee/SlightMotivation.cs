@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using NonoMod.Buffs;
 using NonoMod.Items.Projectiles;
 using Steamworks;
 using System;
@@ -49,6 +50,7 @@ namespace NonoMod.Items.Weapons.Melee
 
             if (player.altFunctionUse == 2)
             {
+                player.AddBuff(ModContent.BuffType<EdgeCooldown>(), 5555);
                 if (player.direction == 1)
                 {
                     Projectile.NewProjectile(source, position.X, position.Y, 17f, velocity.Y, ModContent.ProjectileType<Edge>(), damage, knockback, player.whoAmI);
@@ -80,6 +82,18 @@ namespace NonoMod.Items.Weapons.Melee
         }
 
         public override bool AltFunctionUse(Player player) => true;
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2 && player.HasBuff(ModContent.BuffType<EdgeCooldown>()))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         public override void AddRecipes()
         {
