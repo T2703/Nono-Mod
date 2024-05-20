@@ -5,6 +5,7 @@ using NonoMod.Items.Materials;
 using NonoMod.Items.Pictures;
 using NonoMod.Items.Weapons.Magic;
 using NonoMod.Items.Weapons.Melee;
+using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -18,11 +19,7 @@ namespace NonoMod.NPCs
 {
 	public class Jetstream : ModNPC
 	{
-        public float Timer
-        {
-            get => NPC.ai[0];
-            set => NPC.ai[0] = value;
-        }
+        public int timer2;
 
         public override void SetDefaults()
         {
@@ -41,11 +38,12 @@ namespace NonoMod.NPCs
 
         public override void AI()
         {
-            Timer++;
+            timer2++;
             NPC.TargetClosest();
 
-            if (NPC.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+            if (timer2 > 120 && Main.netMode != NetmodeID.MultiplayerClient)
             {
+                timer2 = 0;
                 var source = NPC.GetSource_FromAI();
                 Vector2 position = NPC.Center;
                 Vector2 targetPosition = Main.player[NPC.target].Center;
@@ -55,17 +53,9 @@ namespace NonoMod.NPCs
                 int type = ProjectileID.PinkLaser;
                 int damage = NPC.damage; //If the projectile is hostile, the damage passed into NewProjectile will be applied doubled, and quadrupled if expert mode, so keep that in mind when balancing projectiles if you scale it off NPC.damage (which also increases for expert/master)
                 Projectile.NewProjectile(source, position, direction * speed, type, damage, 0f, Main.myPlayer);
-
-                // TODO: Make this timer work better.
-                if (Timer > 120)
-                {
-                    Timer = 0;
-                    speed = 0f;
-                    type = ProjectileID.None;
-                    damage = 0;
-                    Projectile.NewProjectile(source, position, direction * speed, type, damage, 0f, Main.myPlayer);
-                }
             }
+           
+
         }
 
         /*public override float SpawnChance(NPCSpawnInfo spawnInfo)
