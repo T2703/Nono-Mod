@@ -627,4 +627,5 @@ NPCs: {
 	SillyBeer.DisplayName: Silly Beer
 	DemonMan.DisplayName: Demon Man
 	Jetstream.DisplayName: Jetstream
+	V.DisplayName: V
 }
