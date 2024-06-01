@@ -3,6 +3,7 @@ using NonoMod.Items;
 using NonoMod.Items.Consumables;
 using NonoMod.Items.Materials;
 using NonoMod.Items.Pictures;
+using NonoMod.Items.Projectiles;
 using NonoMod.Items.Weapons.Magic;
 using NonoMod.Items.Weapons.Melee;
 using Steamworks;
@@ -41,7 +42,7 @@ namespace NonoMod.NPCs
             timer2++;
             NPC.TargetClosest();
 
-            if (timer2 > 120 && Main.netMode != NetmodeID.MultiplayerClient)
+            if (timer2 > 105 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 timer2 = 0;
                 var source = NPC.GetSource_FromAI();
@@ -50,7 +51,7 @@ namespace NonoMod.NPCs
                 Vector2 direction = targetPosition - position;
                 direction.Normalize();
                 float speed = 10f;
-                int type = ProjectileID.PinkLaser;
+                int type = ModContent.ProjectileType<SamSlash>();
                 int damage = NPC.damage; //If the projectile is hostile, the damage passed into NewProjectile will be applied doubled, and quadrupled if expert mode, so keep that in mind when balancing projectiles if you scale it off NPC.damage (which also increases for expert/master)
                 Projectile.NewProjectile(source, position, direction * speed, type, damage, 0f, Main.myPlayer);
             }
@@ -74,7 +75,7 @@ namespace NonoMod.NPCs
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RedJetstream>(), 23, 5, 10));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RedJetstream>(), 23, 1, 1));
 
         }
 
