@@ -6,6 +6,7 @@ using NonoMod.Items.Pictures;
 using NonoMod.Items.Projectiles;
 using NonoMod.Items.Weapons.Magic;
 using NonoMod.Items.Weapons.Melee;
+using NonoMod.Items.Weapons.Ranged;
 using Steamworks;
 using Terraria;
 using Terraria.Audio;
@@ -105,7 +106,7 @@ namespace NonoMod.NPCs
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RedJetstream>(), 23, 5, 10));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HelicopterGun>(), 19, 1, 1));
 
         }
 

@@ -485,6 +485,11 @@ Items: {
 		Tooltip: ""
 		DisplayName: Red Jetstream
 	}
+
+	HelicopterGun: {
+		Tooltip: A single burst can cut a man in half!
+		DisplayName: Helicopter Gun
+	}
 }
 
 Projectiles: {
@@ -630,4 +635,5 @@ NPCs: {
 	Jetstream.DisplayName: Jetstream
 	V.DisplayName: V
 	Peecock.DisplayName: Peecock
+	AI.DisplayName: A I
 }
