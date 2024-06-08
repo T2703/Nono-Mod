@@ -636,4 +636,5 @@ NPCs: {
 	V.DisplayName: V
 	Peecock.DisplayName: Peecock
 	AI.DisplayName: A I
+	Senator.DisplayName: Senator
 }
