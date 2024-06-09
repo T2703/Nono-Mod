@@ -10,16 +10,17 @@ using Terraria.Audio;
 
 namespace NonoMod.Items.Projectiles
 {
-	public class SamSlash : ModProjectile
+	public class StarsNStripes : ModProjectile
 	{
 
         public override void SetDefaults()
 		{
-            Projectile.width = 87;
-            Projectile.height = 160;
+            Projectile.width = 80;
+            Projectile.height = 80;
             Projectile.DamageType = DamageClass.Generic;
             Projectile.friendly = false;
-            Projectile.tileCollide = false;
+            Projectile.hostile = true;
+            Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 200;
@@ -29,7 +30,13 @@ namespace NonoMod.Items.Projectiles
 
         public override void AI()
         {
+            Projectile.velocity *= 1.1f;
             Projectile.rotation = Projectile.velocity.ToRotation();
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, new Vector2(0, 0), ProjectileID.Fireball, Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
         }
 
 

@@ -565,6 +565,7 @@ Projectiles: {
 	IceSpray.DisplayName: Ice Spray
 	Edge.DisplayName: Edge
 	SamSlash.DisplayName: Sam Slash
+	StarsNStripes.DisplayName: Stars N Stripes
 }
 
 Buffs: {
