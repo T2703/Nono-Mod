@@ -8,6 +8,7 @@ using NonoMod.Items.Weapons.Magic;
 using NonoMod.Items.Weapons.Melee;
 using NonoMod.Items.Weapons.Ranged;
 using Steamworks;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -22,9 +23,16 @@ namespace NonoMod.NPCs
 	public class Senator : ModNPC
 	{
         public int timer1 = 0;
+        public int timer2 = 0;
         public int timerShoot = 0;
-        private int burstCount = 3;
-        private int burstInterval = 5;
+        public int burstCount = 3;
+        public int burstInterval = 5;
+
+        private bool isCooldown = false;
+        private int cooldownTimer = 0;
+        private const int CooldownPeriod = 100;
+        private const int BarrageDuration = 10;
+        private const int FireInterval = 3;
 
         public override void SetDefaults()
         {
@@ -39,39 +47,54 @@ namespace NonoMod.NPCs
             NPC.DeathSound = SoundID.Item14;
             NPC.knockBackResist = 0.3f;
             AIType = 44;
+
         }
 
         public override void AI()
         {
-            if (NPC.life <= NPC.life / 2)
+            if (NPC.life <= NPC.lifeMax / 2) 
             {
-                timer1++;
-                NPC.TargetClosest();
-                if (timer1 > 90 && Main.netMode != NetmodeID.MultiplayerClient)
+                if (isCooldown)
                 {
-                    timer1 = 0;
-                    timerShoot++;
-                    var source = NPC.GetSource_FromAI();
-                    Vector2 position = NPC.Center;
-                    Vector2 targetPosition = Main.player[NPC.target].Center;
-                    Vector2 direction = targetPosition - position;
-                    direction.Normalize();
-                    float speed = 5f;
-                    int type = ModContent.ProjectileType<StarsNStripes>();
-                    int damage = NPC.damage; //If the projectile is hostile, the damage passed into NewProjectile will be applied doubled, and quadrupled if expert mode, so keep that in mind when balancing projectiles if you scale it off NPC.damage (which also increases for expert/master)
-                    
-                    // Shoot bursts at specific intervals
-                    if (timerShoot % (burstCount * burstInterval) < burstCount * burstInterval && timerShoot % burstInterval == 0)
+                    // Cooldown period after barrage
+                    cooldownTimer++;
+                    if (cooldownTimer >= CooldownPeriod)
                     {
-                        Projectile.NewProjectile(source, position, direction * speed, type, damage, 0f, Main.myPlayer);
-                    }
-
-                    // Reset timerShoot after completing a burst
-                    if (timerShoot >= burstCount * burstInterval)
-                    {
-                        timerShoot = 0;
+                        isCooldown = false;
+                        cooldownTimer = 0;
+                        timer1 = 0;
                     }
                 }
+                else
+                {
+                    // Barrage firing mechanism
+                    timer1++;
+                    timer2++;
+
+                    if (timer1 <= BarrageDuration)
+                    {
+                        if (timer2 >= FireInterval && Main.netMode != NetmodeID.MultiplayerClient)
+                        {
+                            timer2 = 0;
+                            var source = NPC.GetSource_FromAI();
+                            Vector2 position = NPC.Center;
+                            Vector2 targetPosition = Main.player[NPC.target].Center;
+                            Vector2 direction = targetPosition - position;
+                            direction.Normalize();
+                            float speed = 30f;
+                            int type = ModContent.ProjectileType<StarsNStripes>();
+                            int damage = NPC.damage;
+                            Projectile.NewProjectile(source, position, direction * speed, type, damage, 0f, Main.myPlayer);
+                        }
+                    }
+                    else
+                    {
+                        // Enter cooldown period after barrage
+                        isCooldown = true;
+                    }
+                }
+
+                NPC.TargetClosest();
             }
         }
 
