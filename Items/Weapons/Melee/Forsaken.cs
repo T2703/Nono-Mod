@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 using NonoMod.PlayerProp;
 using NonoMod.Rarities;
 using NonoMod.Items.Materials;
+using Terraria.Localization;
 
 namespace NonoMod.Items.Weapons.Melee
 {
@@ -22,6 +23,8 @@ namespace NonoMod.Items.Weapons.Melee
 
         public int dashDelay = 0;
         public int dashTimer = 0;
+
+        private int customResourceCost;
 
         // The Dollar Store Yamato
 
@@ -45,20 +48,25 @@ namespace NonoMod.Items.Weapons.Melee
             Item.noUseGraphic = true;
             Item.shoot = ProjectileID.TrueExcalibur; // So I can shoot my projectile.
             Item.noMelee = true;
+            customResourceCost = 100;
 
         }
 
-        public override bool CanUseItem(Player player)
+        /*public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2 && player.HasBuff(ModContent.BuffType<JudgementCutCooldown>()))
-            {
-                return false;
-            }
-            else
+            var customResourcePlayer = player.GetModPlayer<PlayerForsakenResource>();
+
+            if (player.altFunctionUse == 2 && customResourcePlayer.customResourceCurrent >= customResourceCost)
             {
                 return true;
             }
-        }
+            else
+            {
+                return false;
+            }
+
+            //player.HasBuff(ModContent.BuffType<JudgementCutCooldown>()) something old here for the if statement
+        }*/
 
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -74,10 +82,14 @@ namespace NonoMod.Items.Weapons.Melee
             float randomVelX = (Main.rand.Next(2) == 0) ? -10f : 10f;
             float randomVelY = (Main.rand.Next(2) == 0) ? -10f : 10f;
 
-            if (player.altFunctionUse == 2 && !player.HasBuff(ModContent.BuffType<JudgementCutCooldown>())) //!player.HasBuff(ModContent.BuffType<SwordDanceCooldown>())
+            var customResourcePlayer = player.GetModPlayer<PlayerForsakenResource>();
+
+            if (player.altFunctionUse == 2 && customResourcePlayer.customResourceCurrent >= customResourceCost) //!player.HasBuff(ModContent.BuffType<SwordDanceCooldown>())
             {
                 player.AddBuff(ModContent.BuffType<Motivation>(), 1250);
                 player.AddBuff(ModContent.BuffType<JudgementCutCooldown>(), 9000);
+
+                customResourcePlayer.customResourceCurrent -= customResourceCost;
 
                 SoundStyle JudgementCutRelease = new SoundStyle($"{nameof(NonoMod)}/Items/Sounds/ForsakenJudgeSFX")
                 {
@@ -128,6 +140,7 @@ namespace NonoMod.Items.Weapons.Melee
 
             return true;
         }
+
 
         public override bool AltFunctionUse(Player player)
         {
